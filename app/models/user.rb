@@ -28,8 +28,6 @@ class User < ApplicationRecord
               :message => "Deve ter entre 8 e 20 caracateres"}
 end
 
-
-#todo
 # * REGEX CPF format ^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$
 # * REGEX PHONE BR ^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$
 # * REGEX ADDRESS BR ([\w\W]+)\s(\d+)

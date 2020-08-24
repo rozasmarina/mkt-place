@@ -19,10 +19,11 @@ ActiveRecord::Schema.define(version: 2020_08_24_181808) do
     t.bigint "user_id", null: false
     t.string "type"
     t.integer "quantity"
-    t.integer "price"
+    t.float "price"
     t.string "product_name"
     t.text "product_description"
     t.string "product_category"
+    t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_announces_on_user_id"
@@ -30,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_181808) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer "quantity"
-    t.integer "price"
+    t.float "price"
     t.bigint "announce_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

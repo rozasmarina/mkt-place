@@ -31,3 +31,4 @@ rand(0..8).times do
                    quantity: quantity,
                    type: type)
 end
+

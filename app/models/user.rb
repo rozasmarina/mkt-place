@@ -6,27 +6,27 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :announces
   has_many :transactions
-  validates :first_name, :last_name, :address, :phone, :username, :email, :cpf, presence: true {:message => "Campo obrigatório"}  
+  validates :first_name, :last_name, :address, :phone, :username, :email, :cpf, presence: true { message: "Campo obrigatório" }  
   validates :username, :email, :cpf, uniqueness: true
   validates :email, confirmation: true
   validates  :first_name, :last_name,
-  :format => {:with => /[A-Za-z]+/,
-              :message => "Permitido somente caracteres alfanuméricos"}
+  format: {with: /[A-Za-z]+/,
+              message: "Permitido somente caracteres alfanuméricos"}
   validates  :cpf,
-  :format => {:with => /^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$/,
-              :message => "Entre um CPF válido"}
+  format: {with: /^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$/,
+              message: "Entre um CPF válido"}
   validates  :phone,
-  :format => {:with => /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/,
-              :message => "Entre um telefone válido"}
+  format: {with: /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/,
+              message: "Entre um telefone válido"}
   validates  :email,
-  :format => {:with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/,
-              :message => "Entre um e-mail válido"}
+  format: {with: /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/,
+              message: "Entre um e-mail válido"}
   validates  :email,
-  :format => {:with => /([\w\W]+)\s(\d+)/,
-              :message => "Entre um endereço válido"}
+  format: {with: /([\w\W]+)\s(\d+)/,
+              message: "Entre um endereço válido"}
   validates  :username,
-  :format => {:with => /^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/,
-              :message => "Deve ter entre 8 e 20 caracateres"}
+  format: {with: /^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/,
+              message: "Deve ter entre 8 e 20 caracateres"}
 end
 
 # * REGEX CPF format ^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$

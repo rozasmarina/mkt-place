@@ -19,16 +19,15 @@ end
 
 rand(0..8).times do
   product_name = Faker::Commerce.product_name
-  product_category = Faker::Commerce.department(max: 5)
-  product_description =
-    price = Faker::Commerce.price
+  product_category = Faker::Commerce.department
+  product_description = Faker::TvShows::Simpsons.quote
+  price = Faker::Commerce.price
+  quantity = rand(1..10)
+  type = %w[gallery highlight top free].sample
+  Announce.create!(product_name: product_name,
+                   product_category: product_category,
+                   product_description: product_description,
+                   price: price,
+                   quantity: quantity,
+                   type: type)
 end
-
-t.references :user, null: false, foreign_key: true
-t.string :type
-t.integer :quantity
-t.integer :price
-t.string :product_name
-t.text :product_description
-t.string :product_category
-t.boolean :active, default: true

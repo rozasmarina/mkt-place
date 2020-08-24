@@ -4,5 +4,5 @@ class Transaction < ApplicationRecord
 
   validates :price, :quantity, presence: true
   validates :price, :quantity, numericality: true
-    validates :price, :quantity, numericality: { greater_than: 0 }
+  validates :price, :quantity, numericality: { greater_than: 0 }
 end

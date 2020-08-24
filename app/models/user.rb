@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :transactions
   validates :first_name, :last_name, :address, :phone, :username, :email, :cpf, presence: true {:message => "Campo obrigatório"}  
   validates :username, :email, :cpf, uniqueness: true
+  validates :email, confirmation: true
   validates  :first_name, :last_name,
   :format => {:with => /[A-Za-z]+/,
               :message => "Permitido somente caracteres alfanuméricos"}

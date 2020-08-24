@@ -8,6 +8,7 @@ class CreateAnnounces < ActiveRecord::Migration[6.0]
       t.string :product_name
       t.text :product_description
       t.string :product_category
+      t.boolean :active, default: true
 
       t.timestamps
     end

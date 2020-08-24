@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_181808) do
     t.string "product_name"
     t.text "product_description"
     t.string "product_category"
+    t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_announces_on_user_id"

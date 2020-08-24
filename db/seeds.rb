@@ -16,3 +16,22 @@
                phone_number: phone_number,
                cpf: cpf)
 end
+
+(1..5).times do
+  user =
+    type =
+      quantity =
+        price =
+          product_name = "#{Faker::Appliance.brand} #{Faker::Appliance.equipment}"
+  product_description =
+    product_category = Faker::Commerce.department(max: 5)
+end
+
+t.references :user, null: false, foreign_key: true
+t.string :type
+t.integer :quantity
+t.integer :price
+t.string :product_name
+t.text :product_description
+t.string :product_category
+t.boolean :active, default: true

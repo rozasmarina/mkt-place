@@ -14,7 +14,6 @@
     <p><%= link_to 'Sign up', new_user_registration_path %></p>
   <% end %>
 
-  <p><%= link_to  "Create a new announce", new_user_announce_path(current_user) %></p>
   <p><%= render 'form', announces: @announces %></p>
 </div>
 

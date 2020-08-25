@@ -57,7 +57,7 @@ sleep(1)
   end
 end
 
-puts "Generating transactions..."
+puts "Generating order..."
 rand(5..10).times do
   announce = Announce.find(rand(1..Announce.count))
   buyer = User.find(rand(1..User.count))

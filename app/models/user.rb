@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :announces
   has_many :order
+  has_one_attached :photo
   validates :first_name, :last_name, :address, :phone_number, :username, :email, :cpf, presence: { message: "Campo obrigatório" }
   validates :username, :email, :cpf, uniqueness: true
   validates :email, confirmation: true

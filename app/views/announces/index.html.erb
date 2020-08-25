@@ -2,12 +2,12 @@
 <%# banner na home? %>
 <%# add photos do cards %>
 <%# what's the strcuture of the home page? %>
-<div>
-    <div>
-    <% @announces.each do |announce| %>
-        <p><%= announce.product_name %></p>
-    <% end %>
+<div class="container">
+  <% @announces.each do |announce| %>
+    <div class="container border">
+      <p><%= link_to announce.product_name, announce_path(announce) %></p>
     </div>
+  <% end %>
 </div>
 
 

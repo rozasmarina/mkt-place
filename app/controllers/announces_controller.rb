@@ -9,6 +9,9 @@ class AnnouncesController < ApplicationController
     @free_announces = Announce.where("announce_type = ?", "free")
   end
 
+  def show
+  end
+
   def new
     @announce = Announce.new
   end
@@ -22,13 +25,12 @@ class AnnouncesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def edit
   end
 
   def update
+    @annouce.update(announce_params)
+    redirect_to announce_path(@announce)
   end
 
   def destroy

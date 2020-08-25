@@ -4,8 +4,8 @@ class AnnouncesController < ApplicationController
 
   def index
     @search = params['search']
-    @name = @search["name"]
-    if @search.present? && @name != ''
+    if @search.present? && @search["name"] != ''
+      @name = @search["name"]
       @announces = Announce.where("lower(product_name) ILIKE ?", "%#{@name.downcase}%")
     else
       @announces = Announce.all

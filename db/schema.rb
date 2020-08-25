@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 2020_08_24_181808) do
 
   create_table "announces", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "type"
+    t.string "announce_type"
     t.integer "quantity"
-    t.integer "price"
+    t.float "price"
     t.string "product_name"
     t.text "product_description"
     t.string "product_category"
@@ -29,15 +29,15 @@ ActiveRecord::Schema.define(version: 2020_08_24_181808) do
     t.index ["user_id"], name: "index_announces_on_user_id"
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
     t.integer "quantity"
-    t.integer "price"
+    t.float "price"
     t.bigint "announce_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["announce_id"], name: "index_transactions_on_announce_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.index ["announce_id"], name: "index_orders_on_announce_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,6 +59,6 @@ ActiveRecord::Schema.define(version: 2020_08_24_181808) do
   end
 
   add_foreign_key "announces", "users"
-  add_foreign_key "transactions", "announces"
-  add_foreign_key "transactions", "users"
+  add_foreign_key "orders", "announces"
+  add_foreign_key "orders", "users"
 end

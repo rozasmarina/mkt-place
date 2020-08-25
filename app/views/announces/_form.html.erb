@@ -1,0 +1,15 @@
+<div class="container">
+  <%= simple_form_for(announce) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%= f.input :product_name %>
+    <%= f.input :product_description %>
+    <%= f.input :price %>
+    <%= f.input :quantity %>
+    <%= f.input :product_category %>
+    <%= f.input :announce_type, as: :select, collection: %w[Gallery Highlight Top Free] %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
+

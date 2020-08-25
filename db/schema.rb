@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_181808) do
 
   create_table "announces", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "type"
+    t.string "announce_type"
     t.integer "quantity"
     t.float "price"
     t.string "product_name"

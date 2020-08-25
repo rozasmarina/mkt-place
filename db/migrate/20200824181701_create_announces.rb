@@ -2,7 +2,7 @@ class CreateAnnounces < ActiveRecord::Migration[6.0]
   def change
     create_table :announces do |t|
       t.references :user, null: false, foreign_key: true
-      t.string :type
+      t.string :announce_type
       t.integer :quantity
       t.float :price
       t.string :product_name

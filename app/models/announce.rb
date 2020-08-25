@@ -8,5 +8,5 @@ class Announce < ApplicationRecord
   validates :product_description, length: { minimum: 100 }
   validates :price, :quantity, numericality: true
   validates :price, :quantity, numericality: { greater_than: 0 }
-  validates :announce_type, inclusion: { in: %w[gallery highlight top free] }
+  validates :announce_type, inclusion: { in: %w[Gallery Highlight Top Free] }
 end

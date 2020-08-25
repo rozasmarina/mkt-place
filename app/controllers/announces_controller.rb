@@ -11,10 +11,12 @@ class AnnouncesController < ApplicationController
   end
 
   def new
+    @user = User.find(params[:user_id])
     @announce = Announce.new
   end
 
   def create
+    @user = User.find(params[:user_id])
     @announce = Announce.new(announce_params)
     if @announce.save
       redirect_to announce_path(@announce)

@@ -3,11 +3,17 @@ class AnnouncesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @announces = Announce.all
-    @gallery_announces = Announce.where("announce_type = ?", "gallery")
-    @highlight_announces = Announce.where("announce_type = ?", "highlight")
-    @top_announces = Announce.where("announce_type = ?", "top")
-    @free_announces = Announce.where("announce_type = ?", "free")
+    @search = params['search']
+    if @search.present? && @search["name"] != ''
+      @name = @search["name"]
+      @announces = Announce.where("lower(product_name) ILIKE ?", "%#{@name.downcase}%")
+    else
+      @announces = Announce.all
+      @gallery_announces = Announce.where("announce_type = ?", "gallery")
+      @highlight_announces = Announce.where("announce_type = ?", "highlight")
+      @top_announces = Announce.where("announce_type = ?", "top")
+      @free_announces = Announce.where("announce_type = ?", "free")
+    end
   end
 
   def new

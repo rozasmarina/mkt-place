@@ -1,5 +1,9 @@
 class AnnouncesController < ApplicationController
   before_action :set_announce, only: [:show, :edit, :update, :destroy]
+  
+  def index
+    @announces = Announce.all  
+  end
 
   def new
     @announce = Announce.new

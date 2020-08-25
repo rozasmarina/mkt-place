@@ -18,6 +18,7 @@ class AnnouncesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @announce = Announce.new(announce_params)
+    @announce.user = @user
     if @announce.save
       redirect_to announce_path(@announce)
     else
@@ -42,7 +43,7 @@ class AnnouncesController < ApplicationController
   private
 
   def announce_params
-    params.require(:announce).permit(:user_id, :announce_type, :quantity, :price, :product_name, :product_category, :product_description, :active)
+    params.require(:announce).permit(:announce_type, :quantity, :price, :product_name, :product_category, :product_description, :active)
   end
 
   def set_announce

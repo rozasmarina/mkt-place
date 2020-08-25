@@ -1,8 +1,12 @@
 class AnnouncesController < ApplicationController
-  before_action :set_announce, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_announce, only: %i[show edit update destroy]
+
   def index
-    @announces = Announce.all  
+    @announces = Announce.all
+    @gallery_announces = Announce.where("announce_type = ?", "gallery")
+    @highlight_announces = Announce.where("announce_type = ?", "highlight")
+    @top_announces = Announce.where("announce_type = ?", "top")
+    @free_announces = Announce.where("announce_type = ?", "free")
   end
 
   def new

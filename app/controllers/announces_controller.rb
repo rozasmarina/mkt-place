@@ -29,7 +29,7 @@ class AnnouncesController < ApplicationController
 
   def destroy
     @announce.destroy
-    redirect_to root
+    redirect_to root_path
   end
 
   private

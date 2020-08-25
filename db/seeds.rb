@@ -43,7 +43,7 @@ sleep(1)
   rand(1..8).times do
     product_name = Faker::Commerce.product_name
     product_category = Faker::Commerce.department
-    product_description = Faker::Lorem.sentences(number: 20, supplemental: true)
+    product_description = Faker::Lorem.paragraphs.join.to_s
     price = Faker::Commerce.price
     quantity = rand(1..10)
     announce_type = %w[gallery highlight top free].sample.to_s

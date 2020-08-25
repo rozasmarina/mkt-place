@@ -3,7 +3,8 @@ class Announce < ApplicationRecord
   has_many :orders
   has_one_attached :photo
 
-  validates :price, :quantity, :product_name, :product_description, :product_category, :active, :announce_type, presence: true
+  validates :price, :quantity, :product_name, :product_description,
+            :product_category, :active, :announce_type, presence: true
   validates :product_description, length: { minimum: 100 }
   validates :price, :quantity, numericality: true
   validates :price, :quantity, numericality: { greater_than: 0 }

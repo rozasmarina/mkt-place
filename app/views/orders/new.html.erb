@@ -1,0 +1,15 @@
+<h1>Place a new order</h1>
+<div class="container">
+  <%= simple_form_for [@user, @order] do |f| %>
+    <div>
+      <%= f.input :quantity, collection: (0..@announce.quantity).to_a %>
+      <% hidden_field_tag :announce, @announce %>
+      <% hidden_field_tag :user, current_user %>
+      <% hidden_field_tag :price, (@announce.price * :quantity) %>
+    </div>
+    <div>
+      <%= f.submit 'Submit' %>
+    </div>
+  <% end %>
+</div>
+<%= link_to  "Go back", root_path %>

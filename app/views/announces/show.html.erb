@@ -11,40 +11,7 @@
   <%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
     <i class="fas fa-trash"></i>
   <% end %>
+  <p><%= link_to  "Buy", new_user_order_path(current_user) %></p>
   <%= link_to  "Go back", root_path %>
 </div>
 <%# footer %>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buyModal" data-whatever="@getbootstrap">Buy</button>
-<div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="buyModalLabel">How many items?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Confirm</button>
-      </div>
-    </div>
-  </div>
-</div>
-<%= simple_form_for [@user, @order], method: 'post' do |f| %>
-  <div>
-    <%= f.input :quantity, collection: (0..@announce.quantity).to_a %>
-    <% hidden_field_tag :announce, @announce %>
-    <% hidden_field_tag :user, current_user %>
-    <% hidden_field_tag :price, (@announce.price * :quantity) %>
-  </div>
-  <div>
-    <%= f.submit 'Submit' %>
-  </div>
-<% end %>

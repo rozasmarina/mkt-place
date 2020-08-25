@@ -1,0 +1,7 @@
+<h1>My orders</h1>
+
+<ul>
+  <% @user.order.each do |order|%>
+    <li><%= link_to order.announce.product_name, user_order_path(current_user, order) %></li>
+  <% end %>
+</ul>

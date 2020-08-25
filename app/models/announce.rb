@@ -1,6 +1,6 @@
 class Announce < ApplicationRecord
   belongs_to :user
-  has_many :transactions
+  has_many :orders
 
   validates :price, :quantity, :product_name, :product_description, :product_category, :active, presence: true
   validates :product_description, length: { minimum: 100 }

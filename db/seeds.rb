@@ -57,13 +57,13 @@ sleep(1)
   end
 end
 
-puts "Generating transactions..."
+puts "Generating order..."
 rand(5..10).times do
   announce = Announce.find(rand(1..Announce.count))
   buyer = User.find(rand(1..User.count))
   price = rand(20.0..200.0).round(2)
   quantity = rand(1..announce.quantity)
-  Transaction.create!(
+  Order.create!(
     price: price,
     quantity: quantity,
     user: buyer,

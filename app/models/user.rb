@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :announces
-  has_many :transactions
+  has_many :order
   validates :first_name, :last_name, :address, :phone_number, :username, :email, :cpf, presence: { message: "Campo obrigatório" }
   validates :username, :email, :cpf, uniqueness: true
   validates :email, confirmation: true

@@ -1,6 +1,10 @@
 <%# navbar %>
+<div class="container">
+  <h1><%= @announce.product_name %></h1>
 
-<h1><%= @announce.product_name %></h1>
-
+  <%  = link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="fas fa-trash"></i>
+  <% end %>
+</div>
 
 <%# footer %>

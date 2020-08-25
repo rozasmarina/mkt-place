@@ -1,6 +1,13 @@
 <%# navbar %>
 <div class="container">
   <h1><%= @announce.product_name %></h1>
+  <div>
+    <p><%= @announce.product_description.join %></p>
+    <p><%= @announce.price %></p>
+    <p><%= @announce.quantity  %></p>
+    <p><%= @announce.product_category %></p>
+    <p><%= @announce.announce_type %></p>
+  </div>
 
   <%= link_to  "Edit announce", edit_announce_path(@announce) %>
   <%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>

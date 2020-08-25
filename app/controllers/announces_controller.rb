@@ -39,6 +39,8 @@ class AnnouncesController < ApplicationController
   end
 
   def update
+    @announce.update(announce_params)
+    redirect_to @announce
   end
 
   def destroy

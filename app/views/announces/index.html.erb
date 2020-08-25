@@ -2,63 +2,77 @@
 <%# banner na home? %>
 <%# add photos do cards %>
 <%# what's the strcuture of the home page? %>
-<div>
+<div class='container'>
   <% if user_signed_in? %>
     <p>User: <%= current_user.first_name %></p>
     <p><%= link_to 'Edit profile', edit_user_registration_path %></p>
+    <p><%= link_to 'See your profile', user_path(current_user) %></p>
     <p><%= link_to 'Log out',  destroy_user_session_path, method: :delete %></p>
+    <p><%= link_to  "Create a new announce", new_user_announce_path(current_user) %></p>
   <% else %>
     <p><%= link_to 'Sign in', new_user_session_path %>  </p>
     <p><%= link_to 'Sign up', new_user_registration_path %></p>
   <% end %>
-  
-  
-</div>
-<div class="container">
-  <%= link_to  "Create a new announce", new_user_announce_path(current_user) %>
-  <div class= "row">
-    <h1 class="w-100">Gallery Announces</h1>
-    <% @gallery_announces.each do |announce| %>
-      <div class="border p-2 m-2">
-        <p><%= link_to announce.product_name, announce_path(announce) %></p>
-      </div>
-    <% end %>
-  </div>
-  <div class= "row">
-    <h1 class="w-100">Highlight Announces</h1>
-    <% @highlight_announces.each do |announce| %>
-      <div class="border p-2 m-2">
-        <p><%= link_to announce.product_name, announce_path(announce) %></p>
-      </div>
-    <% end %>
-  </div>
-  <div class= "row">
-    <h1 class="w-100">Top Announces</h1>
-    <hr>
-    <% @top_announces.each do |announce| %>
-      <div class="border p-2 m-2">
-        <p><%= link_to announce.product_name, announce_path(announce) %></p>
-      </div>
-    <% end %>
-  </div>
-  <div class= "row">
-    <h1 class="w-100">Free Announces</h1>
-    <% @free_announces.each do |announce| %>
-      <div class="border p-2 m-2">
-        <p><%= link_to announce.product_name, announce_path(announce) %></p>
-      </div>
-    <% end %>
-  </div>
-  <div class= "row">
-    <h1 class="w-100">All Announces</h1>
-    <% @announces.each do |announce| %>
-      <div class="border p-2 m-2">
-        <p><%= link_to announce.product_name, announce_path(announce) %></p>
-      </div>
-    <% end %>
-  </div>
+
+  <p><%= render 'form', announces: @announces %></p>
 </div>
 
+<% if @search.present? && @search["name"] != '' %>
+  <div class="container">
+    <div class= "row">
+      <h1 class="w-100">Announces for <%= @name %></h1>
+      <% @announces.each do |announce| %>
+        <div class="border p-2 m-2">
+          <p><%= link_to announce.product_name, announce_path(announce) %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="container">
+    <div class= "row">
+      <h1 class="w-100">Gallery Announces</h1>
+      <% @gallery_announces.each do |announce| %>
+        <div class="border p-2 m-2">
+          <p><%= link_to announce.product_name, announce_path(announce) %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class= "row">
+      <h1 class="w-100">Highlight Announces</h1>
+      <% @highlight_announces.each do |announce| %>
+        <div class="border p-2 m-2">
+          <p><%= link_to announce.product_name, announce_path(announce) %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class= "row">
+      <h1 class="w-100">Top Announces</h1>
+      <hr>
+      <% @top_announces.each do |announce| %>
+        <div class="border p-2 m-2">
+          <p><%= link_to announce.product_name, announce_path(announce) %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class= "row">
+      <h1 class="w-100">Free Announces</h1>
+      <% @free_announces.each do |announce| %>
+        <div class="border p-2 m-2">
+          <p><%= link_to announce.product_name, announce_path(announce) %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class= "row">
+      <h1 class="w-100">All Announces</h1>
+      <% @announces.each do |announce| %>
+        <div class="border p-2 m-2">
+          <p><%= link_to announce.product_name, announce_path(announce) %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 
 <%# footer %>

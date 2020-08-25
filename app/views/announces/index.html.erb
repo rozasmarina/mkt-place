@@ -2,6 +2,18 @@
 <%# banner na home? %>
 <%# add photos do cards %>
 <%# what's the strcuture of the home page? %>
+<div>
+  <% if user_signed_in? %>
+    <p>User: <%= current_user.first_name %></p>
+    <p><%= link_to 'Edit profile', edit_user_registration_path %></p>
+    <p><%= link_to 'Log out',  destroy_user_session_path, method: :delete %></p>
+  <% else %>
+    <p><%= link_to 'Sign in', new_user_session_path %>  </p>
+    <p><%= link_to 'Sign up', new_user_registration_path %></p>
+  <% end %>
+  
+  
+</div>
 <div class="container">
   <div class= "row">
     <h1 class="w-100">Gallery Announces</h1>

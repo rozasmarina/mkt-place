@@ -16,7 +16,7 @@
   <p><%= render 'form', announces: @announces %></p>
 </div>
 
-<% if @search.present? && @name != '' %>
+<% if @search.present? && @search["name"] != '' %>
   <div class="container">
     <div class= "row">
       <h1 class="w-100">Announces for <%= @name %></h1>

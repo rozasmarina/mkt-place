@@ -29,15 +29,15 @@ ActiveRecord::Schema.define(version: 2020_08_24_181808) do
     t.index ["user_id"], name: "index_announces_on_user_id"
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "order", force: :cascade do |t|
     t.integer "quantity"
     t.float "price"
     t.bigint "announce_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["announce_id"], name: "index_transactions_on_announce_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.index ["announce_id"], name: "index_order_on_announce_id"
+    t.index ["user_id"], name: "index_order_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,6 +59,6 @@ ActiveRecord::Schema.define(version: 2020_08_24_181808) do
   end
 
   add_foreign_key "announces", "users"
-  add_foreign_key "transactions", "announces"
-  add_foreign_key "transactions", "users"
+  add_foreign_key "order", "announces"
+  add_foreign_key "order", "users"
 end

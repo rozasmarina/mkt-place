@@ -6,7 +6,9 @@
   <% if user_signed_in? %>
     <p>User: <%= current_user.first_name %></p>
     <p><%= link_to 'Edit profile', edit_user_registration_path %></p>
+    <p><%= link_to 'See your profile', user_path(current_user) %></p>
     <p><%= link_to 'Log out',  destroy_user_session_path, method: :delete %></p>
+    <p><%= link_to  "Create a new announce", new_user_announce_path(current_user) %></p>
   <% else %>
     <p><%= link_to 'Sign in', new_user_session_path %>  </p>
     <p><%= link_to 'Sign up', new_user_registration_path %></p>

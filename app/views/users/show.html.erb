@@ -1,0 +1,22 @@
+<h1>My orders</h1>
+
+<ul>
+  <% @user.orders.each do |order|%>
+    <li><%= link_to order.announce.product_name, user_order_path(current_user, order) %></li>
+  <% end %>
+</ul>
+
+<h1>My sales</h1>
+
+<ul>
+  <% @user.announces.each do |announce| %>
+    <% announce.orders.each do |order|%>
+      <% if order %>
+        <li><%= link_to order.announce.product_name, user_order_path(current_user, order) %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
+
+<%# ('announces.user.id = ?', "#{@user.id}") %>
+

@@ -1,5 +1,5 @@
 
-<div class="container d-flex justify-content-around">
+<%# <div class="container d-flex justify-content-around">
   <div> <!-- MENU LATERAL ESQUERDO -->
     <div> <!-- USUÁRIO-->
     </div>
@@ -13,21 +13,21 @@
       <p>Meus pedidos</p>
       <p>Seja premium</p>
     </div>
-  </div>
+  </div> %>
 
-  <div> <!-- ANÚNCIOS LATERAL DIREITA -->
-    <h2>ANÚNCIOS</h2>
+  <%# <div> <!-- ANÚNCIOS LATERAL DIREITA --> %>
+    <%# <h2>ANÚNCIOS</h2>
 
   </div>
 </div>
-
+ %>
 
 <div class="container">
   <h2>My orders</h2>
-  <div class="d-flex justify-content-around">
+  <div class="d-flex justify-content-start flex-wrap">
     <% @user.orders.each do |order|%>
-      <div class="card" style="width: 18rem;">
-        <img src="#" class="card-img-top" alt="...">
+      <div class="card m-2" style="width: 18rem;">
+        <%= image_tag "http://picsum.photos/200/200?random=#{order.id}" %>
         <div class="card-body">
           <h5 class="card-title"><%= order.announce.product_name %></h5>
           <%= link_to "Veja mais", order_path(order), class: "btn btn-primary" %>
@@ -38,12 +38,12 @@
 
 
   <h2>My sales</h2>
-  <div class="d-flex justify-content-around">
+  <div class="d-flex justify-content-start flex-wrap">
     <% @user.announces.each do |announce| %>
       <% announce.orders.each do |order|%>
         <% if order %>
-          <div class="card" style="width: 18rem;">
-            <img src="#" class="card-img-top" alt="...">
+          <div class="card m-2" style="width: 18rem;">
+            <%= image_tag "http://picsum.photos/200/200?random=#{order.id+20}" %>
             <div class="card-body">
               <h5 class="card-title"><%= order.announce.product_name %></h5>
               <%= link_to "Veja mais", order_path(order), class: "btn btn-primary" %>
@@ -55,10 +55,10 @@
   </div>
 
   <h2>My announces</h2>
-  <div class="d-flex justify-content-around">
+  <div class="d-flex justify-content-start flex-wrap">
     <% @user.announces.each do |announce| %>
-      <div class="card" style="width: 18rem;">
-        <img src="#" class="card-img-top" alt="...">
+      <div class="card m-2" style="width: 18rem;">
+        <%= image_tag "http://picsum.photos/200/200?random=#{announce.id + 40}" %>
         <div class="card-body">
           <h5 class="card-title"><%= announce.product_name %></h5>
           <%= link_to "Veja mais", announce_path(announce), class: "btn btn-primary" %>

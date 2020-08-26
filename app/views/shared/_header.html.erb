@@ -16,15 +16,21 @@
     </div>
     <!---------- Criar anuncio ---------->
     <div class="col-2 ">
-      <a class="btn-announce colors" href="#"> <i class="fas fa-bullhorn"></i> Criar anuncio gratuito</a>
+      <%= link_to new_user_announce_path(current_user), class: "btn-announce colors" do %>
+        Create your ad<br> for free <i class="fas fa-bullhorn"></i>
+      <% end %>
     </div>
     <!---------- Idioma ---------->
     <div class="col-1">
-      <a class="btn-langue colors" href="#"> <i class="fas fa-flag-usa"></i> Idioma</a>
+      <%= link_to user_path(current_user), class:"btn-langue colors" do %>
+        <i class="fas fa-flag-usa"></i> Your profile</a>
+      <% end %>
     </div>
     <!---------- Login ---------->
     <div class="col-1">
-      <a class="btn-login colors" href="#"> <i class="far fa-user"></i> Login</a>
+      <%= link_to new_user_session_path, class: "btn-login colors" do %>
+        <i class="far fa-user"></i>Sign in
+      <% end %> 
     </div>
   </div>
 </header>

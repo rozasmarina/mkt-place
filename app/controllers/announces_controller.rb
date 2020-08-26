@@ -51,7 +51,15 @@ class AnnouncesController < ApplicationController
   private
 
   def announce_params
-    params.require(:announce).permit(:announce_type, :quantity, :price, :product_name, :product_category, :product_description, :active)
+    params.require(:announce).permit(
+      :announce_type, 
+      :quantity, 
+      :price, 
+      :product_name, 
+      :product_category, 
+      :product_description, 
+      :active
+    )
   end
 
   def set_announce

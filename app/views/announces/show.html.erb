@@ -1,19 +1,35 @@
 <%# navbar %>
 <div class="container">
-  <h1><%= @announce.product_name %></h1>
-  <p>Sold by <%= @announce.user.username  %></p>
-  <p>In <%= @announce.product_category  %></p>
-  <p>Type: <%= @announce.announce_type  %></p>
+  <div class="photo-show">
+    <%# photo %>
+  </div>
+  <div class="side-info-box">
+    <div class="info-header">
+      <h2><%= @announce.product_name %></h2>
+    </div>
+    <div class="info-price">
+      <p><i class="fas fa-dollar-sign"></i> <%= @announce.price  %></p>
+    </div>
+    <div class="info-vendor-category">
+      <p>Sold by <%= @announce.user.username  %></p>
+      <p>In <%= @announce.product_category  %></p>
+    </div>
+    <div class="btn btn-outline-primary buy-item">
+      <%= link_to  "Buy", new_announce_order_path(@announce) %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
   <p>Description:</p>
   <p><%= @announce.product_description  %></p>
-  <p><i class="fas fa-dollar-sign"></i> <%= @announce.price  %></p>
   <p><%= @announce.quantity  %> available</p>
-  <p><%= @announce.announce_type %></p>
+  <p>Announce type: <%= @announce.announce_type  %></p>
   <%= link_to  "Edit announce", edit_announce_path(@announce) %>
   <%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
     <i class="fas fa-trash"></i>
   <% end %>
-  <p><%= link_to  "Buy", new_announce_order_path(@announce) %></p>
+  
   <%= link_to  "Go back", root_path %>
 </div>
 <%# footer %>

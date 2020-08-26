@@ -63,31 +63,32 @@
       <% end %>
     </div>
     <div class= "row">
-      <!--
+    </div>
+    <!--
       <h1 class="w-100">Top Announces</h1>
-    <hr>
-    <% @top_announces.each do |announce| %>
-      <div class="border p-2 m-2">
-        <p><%= link_to announce.product_name, announce_path(announce) %></p>
-      </div>
-    <% end %>
-  </div>
-  <div class= "row">
-    <h1 class="w-100">Free Announces</h1>
-    <% @free_announces.each do |announce| %>
-      <div class="border p-2 m-2">
-        <p><%= link_to announce.product_name, announce_path(announce) %></p>
-      </div>
-    <% end %>
-  </div>
-  <div class= "row">
-    <h1 class="w-100">All Announces</h1>
-    <% @announces.each do |announce| %>
-      <div class="border p-2 m-2">
-        <p><%= link_to announce.product_name, announce_path(announce) %></p>
-      </div>
-    <% end %>
-  </div>
+  <hr>
+  <% @top_announces.each do |announce| %>
+    <div class="border p-2 m-2">
+      <p><%= link_to announce.product_name, announce_path(announce) %></p>
+    </div>
+  <% end %>
+</div>
+<div class= "row">
+  <h1 class="w-100">Free Announces</h1>
+  <% @free_announces.each do |announce| %>
+    <div class="border p-2 m-2">
+      <p><%= link_to announce.product_name, announce_path(announce) %></p>
+    </div>
+  <% end %>
+</div>
+<div class= "row">
+  <h1 class="w-100">All Announces</h1>
+  <% @announces.each do |announce| %>
+    <div class="border p-2 m-2">
+      <p><%= link_to announce.product_name, announce_path(announce) %></p>
+    </div>
+  <% end %>
+</div>
 </div>
 <% end %>
 <%# footer %>

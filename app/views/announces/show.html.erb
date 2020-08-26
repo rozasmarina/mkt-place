@@ -19,17 +19,17 @@
     </div>
   </div>
 </div>
-
 <div class="container">
   <p>Description:</p>
   <p><%= @announce.product_description  %></p>
   <p><%= @announce.quantity  %> available</p>
   <p>Announce type: <%= @announce.announce_type  %></p>
-  <%= link_to  "Edit announce", edit_announce_path(@announce) %>
-  <%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
-    <i class="fas fa-trash"></i>
+  <% if @announce.user == @user %>
+    <%= link_to  "Edit announce", edit_announce_path(@announce) %>
+    <%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="fas fa-trash"></i>
+    <% end %>
   <% end %>
-  
   <%= link_to  "Go back", root_path %>
 </div>
 <%# footer %>

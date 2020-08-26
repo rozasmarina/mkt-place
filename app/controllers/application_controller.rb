@@ -3,12 +3,11 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  before_action :search_form
+  helper_method :get_all_announces
 
-  helper_method :search_form
 
-  def search_form
-    @announces= Announce.all
+  def get_all_announces
+    @announces = Announce.all
   end
 
   protected

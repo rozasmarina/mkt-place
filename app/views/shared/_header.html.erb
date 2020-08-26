@@ -26,18 +26,42 @@
     <% end %>
     <!---------- Idioma ---------->
     <% if current_user %>
+      <!--Edit Profile-->
+      <div class="col-1">
+        <%= link_to edit_user_registration_path, class:"btn-langue colors" do %>
+          <i class="fas fa-user-edit"></i> Edit profile
+        <% end %>
+      </div>
+      
+      <!--Profile-->
       <div class="col-1">
         <%= link_to user_path(current_user), class:"btn-langue colors" do %>
-          <i class="fas fa-flag-usa"></i> Your profile</a>
+          <i class="far fa-id-badge"></i> Your profile
+        <% end %>
+      </div>
+
+      <!--Logout-->
+      <div class="col-1">
+        <%= link_to destroy_user_session_path, method: :delete, class:"btn-langue colors" do %>
+          <i class="fas fa-sign-out-alt"></i> Logout
         <% end %>
       </div>
     <% end %>
+    <!------------ Not logged ------------>
+    <% unless current_user %>
     <!---------- Login ---------->
     <div class="col-1">
       <%= link_to new_user_session_path, class: "btn-login colors" do %>
         <i class="far fa-user"></i>Sign in
       <% end %> 
-    </div>
+    </div>     
+    <!---------- Sign Up ---------->
+    <div class="col-1">
+      <%= link_to new_user_registration_path, class: "btn-login colors" do %>
+        <i class="fas fa-user-plus"></i></i>Sign up
+      <% end %> 
+    </div>   
+    <% end %>
   </div>
 </header>
 <!--======== Navbar ========-->

@@ -1,15 +1,21 @@
 <h1>Place a new order</h1>
 <div class="container">
-  <%= simple_form_for [@user, @order] do |f| %>
+  <h1><%= @announce.product_name %></h1>
+  <p>Sold by <%= @announce.user.username  %></p>
+  <p>In <%= @announce.product_category  %></p>
+  <p>Type: <%= @announce.announce_type  %></p>
+  <p>Description:</p>
+  <p><%= @announce.product_description  %></p>
+  <p><i class="fas fa-dollar-sign"></i> <%= @announce.price  %></p>
+  <p><%= @announce.quantity  %> available</p>
+  <%= simple_form_for [@announce, @order] do |f| %>
     <div>
       <%= f.input :quantity, collection: (0..@announce.quantity).to_a %>
       <% hidden_field_tag :announce, @announce %>
-      <% hidden_field_tag :user, current_user %>
-      <% hidden_field_tag :price, (@announce.price * :quantity) %>
     </div>
     <div>
       <%= f.submit 'Submit' %>
     </div>
   <% end %>
 </div>
-<%= link_to  "Go back", root_path %>
+<%= link_to  "Go back", announce_path(@announce) %>

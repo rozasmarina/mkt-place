@@ -8,16 +8,21 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @announce = Announce.find(params[:announce_id])
     @order = Order.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
+    @announce = Announce.find(params[:announce_id])
     @order = Order.new(order_params)
     @order.user = @user
+    @order.price = @announce.price * @order.quantity
+    @order.announce = @announce
     if @order.save
-      redirect_to order_path(@order)
+      @announce.quantity -= @order.quantity
+      @announce.update_attribute(:quantity, @announce.quantity)
+      redirect_to announce_path(@announce)
     else
       render :new
     end
@@ -26,6 +31,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:price, :quantity, :announce)
+    params.require(:order).permit(:quantity)
   end
 end

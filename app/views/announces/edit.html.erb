@@ -1,15 +1,12 @@
 <h1>Edit <%= @announce.product_name %></h1>
 <div class="container">
   <%= simple_form_for(@announce) do |f| %>
-    <%= f.error_notification %>
-    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
     <%= f.input :product_name %>
     <%= f.input :product_description %>
     <%= f.input :price %>
     <%= f.input :quantity %>
     <%= f.input :product_category %>
-    <%= f.input :announce_type, as: :select, collection: %w[Gallery Highlight Top Free] %>
+    <%= f.input :announce_type, selected: @announce.announce_type, collection: %w[Gallery Highlight Top Free], as: :select %>
     <%= f.button :submit %>
   <% end %>
 </div>

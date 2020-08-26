@@ -3,6 +3,7 @@
   <h1><%= @announce.product_name %></h1>
   <p>Sold by <%= @announce.user.username  %></p>
   <p>In <%= @announce.product_category  %></p>
+  <p>Type: <%= @announce.announce_type  %></p>
   <p>Description:</p>
   <p><%= @announce.product_description  %></p>
   <p><i class="fas fa-dollar-sign"></i> <%= @announce.price  %></p>
@@ -11,7 +12,7 @@
   <%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
     <i class="fas fa-trash"></i>
   <% end %>
-  <p><%= link_to  "Buy", new_user_order_path(current_user) %></p>
+  <p><%= link_to  "Buy", new_announce_order_path(@announce) %></p>
   <%= link_to  "Go back", root_path %>
 </div>
 <%# footer %>

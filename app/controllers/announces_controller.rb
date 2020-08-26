@@ -9,10 +9,10 @@ class AnnouncesController < ApplicationController
       @announces = Announce.where("lower(product_name) ILIKE ?", "%#{@name.downcase}%")
     else
       @announces = Announce.all
-      @gallery_announces = Announce.where("announce_type = ?", "gallery")
-      @highlight_announces = Announce.where("announce_type = ?", "highlight")
-      @top_announces = Announce.where("announce_type = ?", "top")
-      @free_announces = Announce.where("announce_type = ?", "free")
+      @gallery_announces = Announce.where("announce_type = ?", "Gallery")
+      @highlight_announces = Announce.where("announce_type = ?", "Highlight")
+      @top_announces = Announce.where("announce_type = ?", "Top")
+      @free_announces = Announce.where("announce_type = ?", "Free")
     end
   end
 

@@ -1,0 +1,43 @@
+.header-top {
+  background-color: white !important;
+
+  .logo {
+  width: 200px;
+  }
+
+  .btn-search-left {
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border: none;
+    background-color: #F0F0F0;
+    padding: 3px 18px;
+    color: #2C2C2D;
+    width: 350px;
+    height: 36px
+  }
+
+  .btn-search-right {
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border: none;
+    background-color: #2C2C2D;
+    padding: 3px 18px;
+    color: white;
+    width: 150px;
+    height: 36px
+  }
+
+  .btn-annouce {
+    border-radius: 100px;
+    padding: 4px;
+    width: 280px;
+    height: 35px;
+    border: solid 2px;
+  }
+
+  .colors {
+  color: #2C2C2D;
+  font-weight: bold;
+  }
+
+}

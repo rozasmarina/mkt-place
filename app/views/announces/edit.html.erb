@@ -6,6 +6,7 @@
     <%= f.input :price %>
     <%= f.input :quantity %>
     <%= f.input :product_category %>
+    <%= f.input :photo, :label => 'Send a image', as: :file %>
     <%= f.input :announce_type, selected: @announce.announce_type, collection: %w[Gallery Highlight Top Free], as: :select %>
     <%= f.button :submit %>
   <% end %>

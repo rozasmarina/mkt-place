@@ -1,7 +1,7 @@
 puts "Creating users..."
 sleep(1)
 
-20.times do
+25.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   username = Faker::Internet.username(specifier: "#{first_name} #{last_name}", separators: %w[. _ -])
@@ -23,7 +23,7 @@ end
 puts "Creating users with announces..."
 sleep(1)
 
-20.times do
+25.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   username = Faker::Internet.username(specifier: "#{first_name} #{last_name}", separators: %w[. _ -])
@@ -40,7 +40,7 @@ sleep(1)
                       address: address,
                       phone_number: phone_number,
                       cpf: cpf)
-  rand(1..8).times do
+  rand(3..10).times do
     product_name = Faker::Commerce.product_name
     product_category = Faker::Commerce.department
     product_description = Faker::Lorem.paragraphs.join.to_s
@@ -58,7 +58,7 @@ sleep(1)
 end
 
 puts "Generating order..."
-rand(5..10).times do
+rand(20..50).times do
   announce = Announce.find(rand(1..Announce.count))
   buyer = User.find(rand(1..User.count))
   price = rand(20.0..200.0).round(2)

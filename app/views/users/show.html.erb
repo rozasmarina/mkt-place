@@ -1,39 +1,70 @@
 
 <div class="container d-flex justify-content-around">
   <div> <!-- MENU LATERAL ESQUERDO -->
+    <div> <!-- USUÁRIO-->
+    </div>
     <div class="border-bottom">
       <h2>PAINEL DE CONTROLE</h2>
     </div>
-    
+      
     <div> <!-- OPÇÕES DO PAINEL DE CONTROLE-->
-
+      <p>Meus anúncios</p>
+      <p>Minhas vendas</p>
+      <p>Meus pedidos</p>
+      <p>Seja premium</p>
     </div>
   </div>
 
   <div> <!-- ANÚNCIOS LATERAL DIREITA -->
     <h2>ANÚNCIOS</h2>
+
   </div>
 </div>
-<h2>My orders</h2>
-<ul>
-  <% @user.orders.each do |order|%>
-    <li><%= link_to order.announce.product_name, order_path(order) %></li>
-  <% end %>
-</ul>
-<h2>My sales</h2>
-<ul>
-  <% @user.announces.each do |announce| %>
-    <% announce.orders.each do |order|%>
-      <% if order %>
-        <li><%= link_to order.announce.product_name, order_path(order) %></li>
+
+
+<div class="container">
+  <h2>My orders</h2>
+  <div class="d-flex justify-content-around">
+    <% @user.orders.each do |order|%>
+      <div class="card" style="width: 18rem;">
+        <img src="#" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= order.announce.product_name %></h5>
+          <%= link_to "Veja mais", order_path(order), class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <h2>My sales</h2>
+  <div class="d-flex justify-content-around">
+    <% @user.announces.each do |announce| %>
+      <% announce.orders.each do |order|%>
+        <% if order %>
+          <div class="card" style="width: 18rem;">
+            <img src="#" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= order.announce.product_name %></h5>
+              <%= link_to "Veja mais", order_path(order), class: "btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
-</ul>
-<h2>My announces</h2>
-<ul>
-  <% @user.announces.each do |announce| %>
-    <li><%= link_to announce.product_name, announce_path(announce) %></li>
-  <% end %>
-</ul>
+  </div>
+
+  <h2>My announces</h2>
+  <div class="d-flex justify-content-around">
+    <% @user.announces.each do |announce| %>
+      <div class="card" style="width: 18rem;">
+        <img src="#" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= announce.product_name %></h5>
+          <%= link_to "Veja mais", announce_path(announce), class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 <%= link_to 'back to Home', root_path %>

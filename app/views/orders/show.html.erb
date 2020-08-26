@@ -3,9 +3,8 @@
 <p>Price: <%= @order.price %></p>
 <p>Quantity: <%= @order.quantity %></p>
 <% if @order.announce.user.username == current_user.username %>
-  <p>From user:<%= @order.announce.user.username %></p>
-<% else %>
-  <p>To user:<%= @order.user.username %></p>
+  <p>To user: <%= @order.user.username %></p>
+<% else %> 
+  <p>From user: <%= @order.announce.user.username %></p>
 <% end %>
 <p>When: <%= @order.created_at %></p>
-

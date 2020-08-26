@@ -3,7 +3,9 @@
   <div class="row align-items-center">
     <!---------- Logo ----------->
     <div class="col-3">
-      <%= image_tag 'logo_hand.png', class: 'logo' %>
+      <%= link_to root_path do %>
+        <%= image_tag 'logo_hand.png', class: 'logo' %>
+      <% end %>
     </div>
     <!---------- Busca ---------->
     <div class="col-5">

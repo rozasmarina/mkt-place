@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :search_form
+  
   def show
     @order = Order.find(params[:id])
     redirect_to announces_path unless @order.user == current_user

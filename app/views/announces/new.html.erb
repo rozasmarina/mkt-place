@@ -14,7 +14,7 @@
         <%= f.input :photo, :label => 'Send a image', as: :file %>
         <%= f.input :announce_type, as: :select, collection: %w[Gallery Highlight Top Free] %>
         <%= f.button :submit, class: "btn btn-outline-primary m-4" %>
-        <%= link_to  "Go back", root_path %>
+        <%= link_to  "Go back", root_path, class: "btn btn-outline-primary" %>
       <% end %>
     </div>
   </div>

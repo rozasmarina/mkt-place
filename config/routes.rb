@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users do
     resources :announces, shallow: true do
-      resources :orders, shallow: true
+      resources :orders, only: %i[show new create], shallow: true
     end
   end
 end

@@ -1,10 +1,7 @@
 class OrdersController < ApplicationController
-  def index
-    @orders = Order.all
-  end
-
   def show
     @order = Order.find(params[:id])
+    redirect_to announces_path unless @order.user == current_user
   end
 
   def new
@@ -32,5 +29,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:quantity)
+  end
+
+  def owner_check
+    redirect_to announces_path unless @order.user == current_user
   end
 end

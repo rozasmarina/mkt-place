@@ -36,14 +36,17 @@ class AnnouncesController < ApplicationController
   end
 
   def edit
+    owner_check
   end
 
   def update
+    owner_check
     @announce.update(announce_params)
     redirect_to @announce
   end
 
   def destroy
+    owner_check
     @announce.destroy
     redirect_to root_path
   end
@@ -56,5 +59,9 @@ class AnnouncesController < ApplicationController
 
   def set_announce
     @announce = Announce.find(params[:id])
+  end
+
+  def owner_check
+    redirect_to announces_path unless @announce.user == current_user
   end
 end

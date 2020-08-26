@@ -1,4 +1,4 @@
-<%# navbar %>
+<h1>Place a new order</h1>
 <div class="container">
   <h1><%= @announce.product_name %></h1>
   <p>Sold by <%= @announce.user.username  %></p>
@@ -8,11 +8,14 @@
   <p><%= @announce.product_description  %></p>
   <p><i class="fas fa-dollar-sign"></i> <%= @announce.price  %></p>
   <p><%= @announce.quantity  %> available</p>
-  <%= link_to  "Edit announce", edit_announce_path(@announce) %>
-  <%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
-    <i class="fas fa-trash"></i>
+  <%= simple_form_for [@announce, @order] do |f| %>
+    <div>
+      <%= f.input :quantity, collection: (0..@announce.quantity).to_a %>
+      <% hidden_field_tag :announce, @announce %>
+    </div>
+    <div>
+      <%= f.submit 'Submit' %>
+    </div>
   <% end %>
-  <p><%= link_to  "Buy", new_announce_order_path(@announce) %></p>
-  <%= link_to  "Go back", root_path %>
 </div>
-<%# footer %>
+<%= link_to  "Go back", announce_path(@announce) %>

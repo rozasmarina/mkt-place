@@ -1,23 +1,19 @@
 <h2>My orders</h2>
-
 <ul>
   <% @user.orders.each do |order|%>
-    <li><%= link_to order.announce.product_name, user_order_path(current_user, order) %></li>
+    <li><%= link_to order.announce.product_name, order_path(order) %></li>
   <% end %>
 </ul>
-
 <h2>My sales</h2>
-
 <ul>
   <% @user.announces.each do |announce| %>
     <% announce.orders.each do |order|%>
       <% if order %>
-        <li><%= link_to order.announce.product_name, user_order_path(current_user, order) %></li>
+        <li><%= link_to order.announce.product_name, order_path(order) %></li>
       <% end %>
     <% end %>
   <% end %>
 </ul>
-
 <h2>My announces</h2>
 <ul>
   <% @user.announces.each do |announce| %>

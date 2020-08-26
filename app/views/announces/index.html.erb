@@ -29,25 +29,25 @@
     </div>
   </div>
 <% else %>
+
   <div class="container">
+    <!-- Galeria Premium -->
     <div class= "row">
-      <h1 class="w-100">Galeria premium </h1> 
-      <!--Carousel Wrapper-->
+      <h2 class="w-100">Galeria premium </h2> 
+
+      <!-- Carousel Wrapper -->
       <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-      <!--Controls-->
+      <!-- Controls -->
       <div class="controls-top">
         <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
         <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
             class="fas fa-chevron-right"></i></a>
       </div>
-      <!--/.Controls-->
 
-      <!--Slides-->
+      <!-- Slides -->
       <div class="carousel-inner" role="listbox">
-
-        <!--First slide-->
-        
+        <!-- First slide -->  
           <% @gallery_announces.each_slice(4).with_index do |gallery, index| %>
             <div class="carousel-item <%= "active" if index.zero?  %>">
               <% gallery.each do |announce| %>
@@ -58,15 +58,20 @@
         </div>
       </div>
     </div>
+
+    <!-- Ultimos anuncios -->
     <div class= "row">
-      <h1 class="w-100">Highlight Announces</h1>
+      <h2 class="w-100 p-2">Ultimos anuncios</h2>
       <% @highlight_announces.each do |announce| %>
+        <%= render "last_announces",announce: announce %>
+        
         <div class="border p-2 m-2">
           <p><%= link_to announce.product_name, announce_path(announce) %></p>
         </div>
       <% end %>
     </div>
     <div class= "row">
+    <!--
       <h1 class="w-100">Top Announces</h1>
       <hr>
       <% @top_announces.each do |announce| %>

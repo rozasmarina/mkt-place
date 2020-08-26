@@ -31,12 +31,32 @@
 <% else %>
   <div class="container">
     <div class= "row">
-      <h1 class="w-100">Gallery Announces</h1>
-      <% @gallery_announces.each do |announce| %>
-        <div class="border p-2 m-2">
-          <p><%= link_to announce.product_name, announce_path(announce) %></p>
+      <h1 class="w-100">Galeria premium </h1> 
+      <!--Carousel Wrapper-->
+      <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+      <!--Controls-->
+      <div class="controls-top">
+        <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+            class="fas fa-chevron-right"></i></a>
+      </div>
+      <!--/.Controls-->
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+
+        <!--First slide-->
+        
+          <% @gallery_announces.each_slice(4).with_index do |gallery, index| %>
+            <div class="carousel-item <%= "active" if index.zero?  %>">
+              <% gallery.each do |announce| %>
+                <%= render "announces_premium",announce: announce %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
     <div class= "row">
       <h1 class="w-100">Highlight Announces</h1>

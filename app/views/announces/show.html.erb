@@ -14,9 +14,11 @@
       <p>Sold by <%= @announce.user.username  %></p>
       <p>In <%= @announce.product_category  %></p>
     </div>
-    <div class="btn btn-outline-primary buy-item">
-      <%= link_to  "Buy", new_announce_order_path(@announce) %>
-    </div>
+    <% if @announce.user != current_user %>
+      <div class="btn btn-outline-primary buy-item">
+        <%= link_to  "Buy", new_announce_order_path(@announce) %>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="container">
@@ -24,7 +26,7 @@
   <p><%= @announce.product_description  %></p>
   <p><%= @announce.quantity  %> available</p>
   <p>Announce type: <%= @announce.announce_type  %></p>
-  <% if @announce.user == @user %>
+  <% if @announce.user == current_user %>
     <%= link_to  "Edit announce", edit_announce_path(@announce) %>
     <%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
       <i class="fas fa-trash"></i>

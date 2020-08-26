@@ -46,7 +46,7 @@ sleep(1)
     product_description = Faker::Lorem.paragraphs.join.to_s
     price = Faker::Commerce.price
     quantity = rand(1..10)
-    announce_type = %w[Gallery Highlight Top Free].sample.to_s
+    announce_type = %w[Gallery Top Free].sample.to_s
     Announce.create!(product_name: product_name,
                      product_category: product_category,
                      product_description: product_description,

@@ -21,9 +21,9 @@ sleep(1)
                       phone_number: phone_number,
                       cpf: cpf)
 
-  avatar_url = "https://api.adorable.io/avatars/150/#{user.username}@adorable.png"
+  avatar_url = "https://api.adorable.io/avatars/150/#{user.username}-handmazing.png"
   avatar = URI.open(avatar_url)
-  user.photo.attach(io: avatar, filename: "#{user.username}.png", content_type: 'image/png')
+  photo.attach(io: avatar, filename: "#{user.username}.png", content_type: 'image/png')
 end
 
 puts "Creating users with announces..."
@@ -46,6 +46,9 @@ sleep(1)
                       address: address,
                       phone_number: phone_number,
                       cpf: cpf)
+  avatar_url = "https://api.adorable.io/avatars/150/#{user.username}-handmazing.png"
+  avatar = URI.open(avatar_url)
+  photo.attach(io: avatar, filename: "#{user.username}.png", content_type: 'image/png')
   rand(3..10).times do
     product_name = Faker::Commerce.product_name
     product_category = Faker::Commerce.department
@@ -53,13 +56,16 @@ sleep(1)
     price = Faker::Commerce.price
     quantity = rand(1..10)
     announce_type = %w[Gallery Top Free].sample.to_s
-    Announce.create!(product_name: product_name,
-                     product_category: product_category,
-                     product_description: product_description,
-                     price: price,
-                     quantity: quantity,
-                     announce_type: announce_type,
-                     user: user)
+    announce = Announce.create!(product_name: product_name,
+                                product_category: product_category,
+                                product_description: product_description,
+                                price: price,
+                                quantity: quantity,
+                                announce_type: announce_type,
+                                user: user)
+    thumb_url = "http://lorempixel.com/output/technics-q-c-1280-720-/#{announce.id}.jpg"
+    thumb = URI.open(thumb_url)
+    photo.attach(io: thumb, filename: "#{user.username}.png", content_type: 'image/png')
   end
 end
 

@@ -18,7 +18,7 @@
       <p>In <%= @announce.product_category  %></p>
     </div>
     <% if @announce.user != current_user %>
-      <div class="btn btn-outline-primary buy-item">
+      <div class="btn btn-success buy-item">
         <%= link_to  "Buy", new_announce_order_path(@announce) %>
       </div>
     <% end %>

@@ -46,7 +46,7 @@
               <%= image_tag "http://picsum.photos/200/200?random=#{announce.id + 40}" %>
               <div class="card-body">
                 <h5 class="card-title"><%= announce.product_name %></h5>
-                <%= link_to "Veja mais", announce_path(announce), class: "btn btn-primary" %>
+                <%= link_to "Veja mais", announce_path(announce), class: "btn btn-success" %>
               </div>
             </div>
           <% end %>
@@ -63,7 +63,7 @@
                   <%= image_tag "http://picsum.photos/200/200?random=#{order.id+20}" %>
                   <div class="card-body">
                     <h5 class="card-title"><%= order.announce.product_name %></h5>
-                    <%= link_to "Veja mais", order_path(order), class: "btn btn-primary" %>
+                    <%= link_to "Veja mais", order_path(order), class: "btn btn-success" %>
                   </div>
                 </div>
               <% end %>
@@ -80,7 +80,7 @@
             <%= image_tag "http://picsum.photos/200/200?random=#{order.id}" %>
             <div class="card-body">
               <h5 class="card-title"><%= order.announce.product_name %></h5>
-              <%= link_to "Veja mais", order_path(order), class: "btn btn-primary" %>
+              <%= link_to "Veja mais", order_path(order), class: "btn btn-success" %>
             </div>
           </div>
         <% end %>

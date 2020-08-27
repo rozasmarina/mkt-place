@@ -6,6 +6,11 @@
 
 <% if @search.present? && @search["name"] != '' %>
   <div class="container">
+    <% if @search.present? && @announces.empty? %>
+      <p>No matches found</p>
+    <% elsif @search.present? && @search["name"] != '' %>
+      <p>There are <%= @announces.count %> announces for <%= @search["name"] %></p>
+    <% end %>
     <div class= "row">
       <h1 class="w-100">Announces for <%= @name %></h1>
       <% @announces.each do |announce| %>

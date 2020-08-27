@@ -8,7 +8,7 @@
       <% end %>
     </div>
     <!---------- Busca ---------->
-    <div class="col-5">
+    <div class="col-4">
       <nav class=" navbar-light bg-light ">
         <form class="form-inline">
           <%= render 'shared/form', announces: get_all_announces %>
@@ -20,17 +20,16 @@
         </form>
       </nav>
     </div>
+    <!---------- current_user menu ---------->
     <!---------- Criar anuncio ---------->
     <% if current_user %>
-      <div class="col-2 ">
+      <div class="col-1 ">
         <%= link_to new_user_announce_path(current_user), class: "btn-announce colors" do %>
           Create your ad<br>
           for free <i class="fas fa-bullhorn"></i>
         <% end %>
       </div>
-    <% end %>
-    <!---------- Idioma ---------->
-    <% if current_user %>
+      
       <div class="col-1">
         <%= "Welcome, #{current_user.first_name}" %>
       </div>

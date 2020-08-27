@@ -3,6 +3,7 @@ class Announce < ApplicationRecord
   has_many :orders
   has_one_attached :photo
   monetize :price_cents
+  monetize :quantity_cents
 
   validates :price_cents, :quantity, :product_name, :product_description,
             :product_category, :announce_type, presence: true

@@ -29,7 +29,7 @@
 <div class="container">
   <p>Description:</p>
   <p><%= @announce.product_description  %></p>
-  <p><%= @announce.quantity  %> available</p>
+  <p><%= @announce.quantity.to_i  %> available</p>
   <p>Announce type: <%= @announce.announce_type  %></p>
   <% if @announce.user == current_user %>
     <%= link_to  "Edit announce", edit_announce_path(@announce) %>

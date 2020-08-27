@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_173230) do
   create_table "announces", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "announce_type"
-    t.integer "quantity"
+    t.integer "quantity_cents", default: 0, null: false
     t.string "product_name"
     t.text "product_description"
     t.string "product_category"
@@ -51,7 +51,9 @@ ActiveRecord::Schema.define(version: 2020_08_27_173230) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "quantity"
+    t.integer "quantity_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.string "state"
     t.bigint "announce_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

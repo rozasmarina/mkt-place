@@ -3,7 +3,7 @@ class CreateAnnounces < ActiveRecord::Migration[6.0]
     create_table :announces do |t|
       t.references :user, null: false, foreign_key: true
       t.string :announce_type
-      t.integer :quantity
+      t.monetize :quantity, currency: { present: false }
       t.string :product_name
       t.text :product_description
       t.string :product_category

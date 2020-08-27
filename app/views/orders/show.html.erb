@@ -1,7 +1,7 @@
 <h1>Details of <%= @order.id %></h1>
 <p>Product: <%= @order.announce.product_name %></p>
 <p>Price: <%= @order.price %></p>
-<p>Quantity: <%= @order.quantity %></p>
+<p>Quantity: <%= @order.quantity.to_i %></p>
 
 <% if @order.announce.user.username == current_user.username %>
   <p>To user: <%= @order.user.username %></p>

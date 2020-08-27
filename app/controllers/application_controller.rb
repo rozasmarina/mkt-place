@@ -5,13 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :all_announces
 
-
   def all_announces
     @announces = Announce.all
-  end
-
-  def search
-
   end
 
   protected

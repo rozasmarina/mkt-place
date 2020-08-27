@@ -11,7 +11,7 @@
       <h2><%= @announce.product_name %></h2>
     </div>
     <div class="info-price">
-      <p><i class="fas fa-dollar-sign"></i> <%= @announce.price  %></p>
+      <p><i class="fas fa-dollar-sign"></i> <%= number_to_currency(@announce.price, precision: 2, unit: "")  %></p>
     </div>
     <div class="info-vendor-category">
       <p>Sold by <%= @announce.user.username  %></p>

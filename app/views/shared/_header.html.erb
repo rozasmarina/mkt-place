@@ -14,7 +14,7 @@
           <%= render 'shared/form', announces: get_all_announces %>
           <% if @search.present? && @announces.empty? %>
             <p>No matches found</p>
-          <% elsif @search.present? && @search["name"] != '' %>  
+          <% elsif @search.present? && @search["name"] != '' %>
             <p>There are <%= @announces.count %> announces for <%= @search["name"] %></p>
           <% end %>
         </form>

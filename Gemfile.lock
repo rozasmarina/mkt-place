@@ -129,6 +129,15 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
+    monetize (1.9.4)
+      money (~> 6.12)
+    money (6.13.8)
+      i18n (>= 0.6.4, <= 2)
+    money-rails (1.13.3)
+      activesupport (>= 3.0)
+      monetize (~> 1.9.0)
+      money (~> 6.13.2)
+      railties (>= 3.0)
     msgpack (1.3.3)
     netrc (0.11.0)
     nio4r (2.5.2)
@@ -236,6 +245,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stripe (5.24.0)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -285,6 +295,7 @@ DEPENDENCIES
   font-awesome-sass
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  money-rails (~> 1.12)
   pg (>= 0.18, < 2.0)
   pry-byebug
   pry-rails
@@ -296,6 +307,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  stripe (~> 5.24)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

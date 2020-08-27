@@ -1,9 +1,7 @@
-<div class="card-deck">
+<!-- <div class="card-deck"> -->
 
- <div class="row">
-
-  <div class="col-sm-6">
-    <div class="card">
+  <div class="col-6 mb-3">
+    <div class="card h-100">
       <%= link_to announce_path(announce) do %>
         <div class="card-body">
         <% if announce.photo.present? %>
@@ -19,18 +17,8 @@
     </div>
   </div>
 
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"> <strong> <%= announce.product_name %> </strong> </h5>
-        <p class="card-text"> <%= announce.product_description %> </p>
-        <p class="card-text">R$ <strong> <%= announce.price %> </strong> </p>
-      </div>
-    </div>
-  </div>
- </div>
 
-</div>
+<!-- </div> -->
 
 
 

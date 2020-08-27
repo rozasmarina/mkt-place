@@ -47,16 +47,13 @@
       </div>
     </div>
     <!-- Ultimos anuncios -->
-    <div class= "row">
+    <div class= "">
       <h2 class="w-100 p-2">Ultimos anuncios</h2>
-      <% @top_announces.reverse.take(8).each do |announce| %>
-        <%= render "last_announces",announce: announce %>
-        <div class="p-2">
-          <p><% link_to announce.product_name, announce_path(announce) %></p>
-        </div>
-      <% end %>
-    </div>
-    <div class= "row">
+      <div class="row">
+        <% @top_announces.reverse.take(8).each do |announce| %>
+          <%= render "last_announces",announce: announce %>
+        <% end %>
+      </div>
     </div>
     <!--
       <h1 class="w-100">Top Announces</h1>

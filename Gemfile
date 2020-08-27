@@ -40,6 +40,7 @@ gem 'cloudinary', '~> 1.12.0'
 # Adding Money Rails and Stripe
 gem 'money-rails', '~>1.12'
 gem 'stripe', '~> 5.24'
+gem 'stripe_event'
 
 group :development, :test do
   gem 'pry-byebug'

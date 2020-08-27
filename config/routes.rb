@@ -11,4 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
+  # open ou routes to code from somewhere else, like an API (it's not the routes we created ourselves)
+  # it's stripe's controllers handling it
 end

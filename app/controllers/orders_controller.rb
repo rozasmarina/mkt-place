@@ -31,7 +31,6 @@ class OrdersController < ApplicationController
       }],
       success_url: order_url(order),
       cancel_url: order_url(order)
-      # if it fails, it goes to the announce page since we didn't implement a logic for showing a order page in case it fails
     )
 
     order.update(checkout_session_id: session.id)

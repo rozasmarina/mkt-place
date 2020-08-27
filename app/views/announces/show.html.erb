@@ -1,8 +1,8 @@
 <%# navbar %>
 <div class="container">
-  <div class="photo-show">
-    <%# photo %>
-  </div>
+    <div class="photo-show">
+      <%= cl_image_tag  @announce.photo.key, height: 600, width: 800 %>
+    </div>
   <div class="side-info-box">
     <div class="info-header">
       <h2><%= @announce.product_name %></h2>

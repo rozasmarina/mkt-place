@@ -19,6 +19,7 @@
   </div>
 </div>
  %>
+<%= cl_image_tag @user.photo.key %>
 <%= controller.redirect_to user_path(current_user) unless current_page?(user_path(current_user)) %>
 <div class="container">
   <h2>My orders</h2>

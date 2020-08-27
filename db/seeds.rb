@@ -1,3 +1,5 @@
+require 'open-uri'
+
 puts "Creating users..."
 sleep(1)
 
@@ -10,14 +12,18 @@ sleep(1)
   address = Faker::Address.full_address
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
   cpf = rand.to_s[2..12]
-  User.create!(first_name: first_name,
-               last_name: last_name,
-               username: username,
-               email: email,
-               password: password,
-               address: address,
-               phone_number: phone_number,
-               cpf: cpf)
+  user = User.create!(first_name: first_name,
+                      last_name: last_name,
+                      username: username,
+                      email: email,
+                      password: password,
+                      address: address,
+                      phone_number: phone_number,
+                      cpf: cpf)
+
+  avatar_url = "https://api.adorable.io/avatars/150/#{user.username}@adorable.png"
+  avatar = URI.open(avatar_url)
+  user.photo.attach(io: avatar, filename: "#{user.username}.png", content_type: 'image/png')
 end
 
 puts "Creating users with announces..."

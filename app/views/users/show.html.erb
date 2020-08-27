@@ -22,6 +22,7 @@
 <%= controller.redirect_to user_path(current_user) unless current_page?(user_path(current_user)) %>
 <div class="container">
   <h2>My orders</h2>
+  <%= cl_image_tag  @user.photo.key %>
   <div class="d-flex justify-content-start flex-wrap">
     <% @user.orders.each do |order|%>
       <div class="card m-2" style="width: 18rem;">

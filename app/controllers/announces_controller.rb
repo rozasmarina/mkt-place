@@ -61,7 +61,8 @@ class AnnouncesController < ApplicationController
       :product_name,
       :product_category,
       :product_description,
-      :active
+      :active,
+      :photo
     )
   end
 

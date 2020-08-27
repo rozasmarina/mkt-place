@@ -30,7 +30,7 @@ class User < ApplicationRecord
 
   def set_default_avatar
     unless photo.attached?
-      avatar_url = "https://api.adorable.io/avatars/150/#{username}-handmazing.png"
+      avatar_url = "https://api.adorable.io/avatars/285/#{id}handmazing.png"
       avatar = URI.open(avatar_url)
       photo.attach(io: avatar, filename: "#{username}.png", content_type: 'image/png')
     end

@@ -3,7 +3,7 @@ require 'open-uri'
 puts "Creating users..."
 sleep(1)
 
-25.times do
+20.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   username = Faker::Internet.username(specifier: "#{first_name} #{last_name}", separators: %w[. _ -])
@@ -21,15 +21,16 @@ sleep(1)
                       phone_number: phone_number,
                       cpf: cpf)
 
-  avatar_url = "https://api.adorable.io/avatars/150/#{user.username}-handmazing.png"
+  avatar_url = "https://api.adorable.io/avatars/285/#{user.id}handmazing.png"
   avatar = URI.open(avatar_url)
-  photo.attach(io: avatar, filename: "#{user.username}.png", content_type: 'image/png')
+  user.photo.attach(io: avatar, filename: "#{user.username}.png", content_type: 'image/png')
+  puts "#{user.username} created"
 end
 
 puts "Creating users with announces..."
 sleep(1)
 
-25.times do
+20.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   username = Faker::Internet.username(specifier: "#{first_name} #{last_name}", separators: %w[. _ -])
@@ -46,9 +47,10 @@ sleep(1)
                       address: address,
                       phone_number: phone_number,
                       cpf: cpf)
-  avatar_url = "https://api.adorable.io/avatars/150/#{user.username}-handmazing.png"
+  avatar_url = "https://api.adorable.io/avatars/285/#{user.id}handmazing.png"
   avatar = URI.open(avatar_url)
-  photo.attach(io: avatar, filename: "#{user.username}.png", content_type: 'image/png')
+  user.photo.attach(io: avatar, filename: "#{user.username}.png", content_type: 'image/png')
+  puts "#{user.username} created"
   rand(3..10).times do
     product_name = Faker::Commerce.product_name
     product_category = Faker::Commerce.department
@@ -65,11 +67,12 @@ sleep(1)
                                 user: user)
     thumb_url = "http://lorempixel.com/output/technics-q-c-1280-720-/#{announce.id}.jpg"
     thumb = URI.open(thumb_url)
-    photo.attach(io: thumb, filename: "#{user.username}.png", content_type: 'image/png')
+    announce.photo.attach(io: thumb, filename: "#{user.username}.png", content_type: 'image/png')
+    puts "Announce for #{announce.product_name} created"
   end
 end
 
-puts "Generating order..."
+puts "Generating orders..."
 rand(20..50).times do
   announce = Announce.find(rand(1..Announce.count))
   buyer = User.find(rand(1..User.count))
@@ -81,6 +84,7 @@ rand(20..50).times do
     user: buyer,
     announce: announce
   )
+  puts "#{buyer.username} bought a #{announce.product_name} from #{announce.user.username}"
 end
 
 puts "Seed successfully created!!!!"

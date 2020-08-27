@@ -11,19 +11,39 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @announce = Announce.find(params[:announce_id])
-    @order = Order.new(order_params)
-    @order.user = @user
-    @order.price = @announce.price * @order.quantity
-    @order.announce = @announce
-    if @order.save
-      @announce.quantity -= @order.quantity
-      @announce.update_attribute(:quantity, @announce.quantity)
-      redirect_to announce_path(@announce)
-    else
-      render :new
-    end
+    announce = Announce.find(params[:announce_id])
+    order = Order.create!(
+                announce: announce,
+                user: current_user,
+                state: 'pending',
+                quantity: order_params['quantity'],
+                price: announce.price
+                )
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: order.announce.product_name,
+        # images: [@announce.photo_url],
+        amount: order.price_cents, # always provide price with cents, otherwise the ammount will not work
+        currency: 'usd',
+        quantity: order.quantity
+      }],
+      success_url: order_url(order),
+      cancel_url: order_url(order)
+      # if it fails, it goes to the announce page since we didn't implement a logic for showing a order page in case it fails
+    )
+
+    order.update(checkout_session_id: session.id)
+    redirect_to new_order_payment_path(order)
+
+    # if @order.save
+    #   @announce.quantity -= @order.quantity
+    #   @announce.update_attribute(:quantity, @announce.quantity)
+    #   redirect_to announce_path(@announce)
+    # else
+    #   render :new
+    # end
   end
 
   private

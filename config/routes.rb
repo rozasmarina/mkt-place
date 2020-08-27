@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :announces, shallow: true do
-      resources :orders, only: %i[show new create], shallow: true
+      resources :orders, only: %i[show new create], shallow: true do
+        resources :payments, only: :new
+      end
     end
   end
+
 end

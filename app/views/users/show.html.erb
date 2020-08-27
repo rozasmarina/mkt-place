@@ -1,65 +1,90 @@
-<%# <div class="container d-flex justify-content-around">
-  <div> <!-- MENU LATERAL ESQUERDO -->
-    <div> <!-- USUÁRIO-->
-    </div>
-    <div class="border-bottom">
-      <h2>PAINEL DE CONTROLE</h2>
-    </div>
-      
-    <div> <!-- OPÇÕES DO PAINEL DE CONTROLE-->
-      <p>Meus anúncios</p>
-      <p>Minhas vendas</p>
-      <p>Meus pedidos</p>
-      <p>Seja premium</p>
-    </div>
-  </div> %>
-<%# <div> <!-- ANÚNCIOS LATERAL DIREITA --> %>
-<%# <h2>ANÚNCIOS</h2>
-
-  </div>
-</div>
- %>
 <%= controller.redirect_to user_path(current_user) unless current_page?(user_path(current_user)) %>
+
 <div class="container">
-  <h2>My orders</h2>
-  <div class="d-flex justify-content-start flex-wrap">
-    <% @user.orders.each do |order|%>
-      <div class="card m-2" style="width: 18rem;">
-        <%= image_tag "http://picsum.photos/200/200?random=#{order.id}" %>
-        <div class="card-body">
-          <h5 class="card-title"><%= order.announce.product_name %></h5>
-          <%= link_to "Veja mais", order_path(order), class: "btn btn-primary" %>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="home" aria-selected="true">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="announces-tab" data-toggle="tab" href="#announces" role="tab" aria-controls="profile" aria-selected="false">Announces</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="sales-tab" data-toggle="tab" href="#sales" role="tab" aria-controls="contact" aria-selected="false">Sales</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="order-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="contact" aria-selected="false">Orders</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <%# PROFILE TAB %>
+    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="container py-5">
+        <p><strong>Username:</strong> <%= current_user.username %></p>
+        <br>
+        <p><strong>First name:</strong> <%= current_user.first_name %></p>
+        <p><strong>Last name:</strong> <%= current_user.last_name %></p>
+        <br>
+        <p><strong>CPF:</strong> <%= current_user.cpf %></p>
+        <br>
+        <p><strong>Registered email:</strong> <%= current_user.email  %></p>
+        <br>
+        <p><strong>Address:</strong> <%= current_user.address  %></p>
+        <br>
+        <p><strong>Phone number:</strong> <%= current_user.phone_number  %></p>
+        <br>
+        <%= link_to edit_user_registration_path, class:"btn-langue colors" do %>
+          <i class="fas fa-user-edit"></i> Edit profile
+        <% end %>
+      </div>     
+    </div>
+    
+    <%# ANNOUNCES TAB %>
+    <div class="tab-pane fade" id="announces" role="tabpanel" aria-labelledby="announces-tab">
+      <div class="d-flex justify-content-start flex-wrap">
+          <% @user.announces.each do |announce| %>
+            <div class="card m-2" style="width: 18rem;">
+              <%= image_tag "http://picsum.photos/200/200?random=#{announce.id + 40}" %>
+              <div class="card-body">
+                <h5 class="card-title"><%= announce.product_name %></h5>
+                <%= link_to "Veja mais", announce_path(announce), class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
         </div>
-      </div>
-    <% end %>
-  </div>
-  <h2>My sales</h2>
-  <div class="d-flex justify-content-start flex-wrap">
-    <% @user.announces.each do |announce| %>
-      <% announce.orders.each do |order|%>
-        <% if order %>
+    </div>
+    
+    <%# SALES TAB %>
+    <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="sales-tab">
+      <div class="d-flex justify-content-start flex-wrap">
+          <% @user.announces.each do |announce| %>
+            <% announce.orders.each do |order|%>
+              <% if order %>
+                <div class="card m-2" style="width: 18rem;">
+                  <%= image_tag "http://picsum.photos/200/200?random=#{order.id+20}" %>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= order.announce.product_name %></h5>
+                    <%= link_to "Veja mais", order_path(order), class: "btn btn-primary" %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+    
+    <%# ORDERS TAB %>
+    <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+      <div class="d-flex justify-content-start flex-wrap">
+        <% @user.orders.each do |order|%>
           <div class="card m-2" style="width: 18rem;">
-            <%= image_tag "http://picsum.photos/200/200?random=#{order.id+20}" %>
+            <%= image_tag "http://picsum.photos/200/200?random=#{order.id}" %>
             <div class="card-body">
               <h5 class="card-title"><%= order.announce.product_name %></h5>
               <%= link_to "Veja mais", order_path(order), class: "btn btn-primary" %>
             </div>
           </div>
         <% end %>
-      <% end %>
-    <% end %>
-  </div>
-  <h2>My announces</h2>
-  <div class="d-flex justify-content-start flex-wrap">
-    <% @user.announces.each do |announce| %>
-      <div class="card m-2" style="width: 18rem;">
-        <%= image_tag "http://picsum.photos/200/200?random=#{announce.id + 40}" %>
-        <div class="card-body">
-          <h5 class="card-title"><%= announce.product_name %></h5>
-          <%= link_to "Veja mais", announce_path(announce), class: "btn btn-primary" %>
-        </div>
-      </div>
-    <% end %>
+      </div>    
+    </div>
   </div>
 </div>
-<%= link_to 'back to Home', root_path %>

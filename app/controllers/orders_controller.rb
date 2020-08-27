@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    redirect_to root_path unless @order.announce.user == current_user
+    redirect_to root_path unless @order.announce.user == current_user || @order.user == current_user
   end
 
   def new

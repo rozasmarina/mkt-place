@@ -1,5 +1,12 @@
-body {
-    color: #2C2C2D;
+.f-color {
+    color: #2c2c2dd7 !important;
+}
+.r-border-card {
+    border-radius: 20px !important;
+}
+
+.r-border-pic {
+    border-radius: 15px !important;
 }
     
 .show-name {
@@ -13,7 +20,8 @@ body {
     padding-bottom: 10px;
     font-size: xx-large;
     font-weight: 600;
-    color: #1FD8D9;
+   // color: #1FD8D9 !important;
+    //background-color: rgba(128, 128, 128, 0.166);
 }
 
 .show-txt {
@@ -26,4 +34,20 @@ body {
 
 .show-cards {
     border-radius: 70px;
+}
+
+.badge-qt {
+    width: 170px !important;
+    height: 20px !important;
+    font-size: small;
+    font-weight: normal;
+    color: white;
+    background-color: #2c2c2dd7;
+    border-radius: 100px;
+}
+
+.font-table {
+    th {
+        font-weight: normal !important;
+}
 }

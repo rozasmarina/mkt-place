@@ -3,12 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :all_announces
-
-  def all_announces
-    @announces = Announce.all
-  end
-
   protected
 
   def configure_permitted_parameters

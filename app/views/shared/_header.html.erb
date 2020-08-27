@@ -11,7 +11,7 @@
     <div class="col-4">
       <nav class=" navbar-light bg-light ">
         <form class="form-inline">
-          <%= render 'shared/form', announces: get_all_announces %>
+          <%= render 'shared/form', announces: all_announces %>
           <% if @search.present? && @announces.empty? %>
             <p>No matches found</p>
           <% elsif @search.present? && @search["name"] != '' %>

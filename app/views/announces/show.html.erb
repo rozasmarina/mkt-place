@@ -1,40 +1,66 @@
 <%# navbar %>
+
+  <!-- Product Photo -->
 <div class="container">
   <% if @announce.photo.blank? %>
   <% else %>
-    <div class="photo-show">
-      <%= cl_image_tag  @announce.photo.key, height: 600, width: 800 %>
+    <div class="photo-show card card-body shadow-sm p-3 mb-5 mt-5 bg-white rounded txt-center">
+      <%= cl_image_tag  @announce.photo.key, height: 600, width: 1078, crop: :fill %>
+      <%#= render "announces_premium",announce: announce %>
     </div>
   <% end %>
-  <div class="side-info-box">
+  
+  <!-- Product Announce Title -->
+  <div class="side-info-box card container pt-3 card-body">
     <div class="info-header">
-      <h2><%= @announce.product_name %></h2>
-    </div>
-    <div class="info-price">
-      <p><i class="fas fa-dollar-sign"></i> <%= @announce.price  %></p>
-    </div>
-    <div class="info-vendor-category">
-      <p>Sold by <%= @announce.user.username  %></p>
-      <p>In <%= @announce.product_category  %></p>
-    </div>
-    <% if @announce.user != current_user %>
-      <div class="btn btn-outline-primary buy-item">
-        <%= link_to  "Buy", new_announce_order_path(@announce) %>
-      </div>
-    <% end %>
+      <h1 class="show-name"> <%= @announce.product_name %> </h1>
   </div>
-</div>
-<div class="container">
-  <p>Description:</p>
-  <p><%= @announce.product_description  %></p>
+
+  <!-- Product Price -->
+  <div class="info-price">
+    <p class="show-price font-weight-normal"> <i class="fas fa-dollar-sign"> </i> <%= @announce.price  %> </p>
+  </div>
+    
+  <!-- Product Description -->
+  <p class="show-title nav nav-tabs">Description</p>
+  <p class="show-txt "><%= @announce.product_description  %></p>
   <p><%= @announce.quantity  %> available</p>
   <p>Announce type: <%= @announce.announce_type  %></p>
-  <% if @announce.user == current_user %>
-    <%= link_to  "Edit announce", edit_announce_path(@announce) %>
-    <%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
-      <i class="fas fa-trash"></i>
-    <% end %>
+
+  <!-- Vendor Username -->
+  <div class="info-vendor">
+    <p>Sold by <%= @announce.user.username %> </p>
+  </div>
+
+  <!-- Product Category -->
+  <div class="info-category ">
+    <p>Category <%= @announce.product_category %> </p>
+  </div>
+
+  <!-- Product Buy -->
+  <% if @announce.user != current_user %>
+    <div class="btn btn-success">
+      <%= link_to  "BUY NOW", new_announce_order_path(@announce) %>
+    </div>
   <% end %>
-  <%= link_to  "Go back", root_path %>
+
+
+<!-- Announce Edit -->
+<% if @announce.user == current_user %>
+<i class="far fa-edit"></i> <%= link_to  "Edit announce", edit_announce_path(@announce) %>
+  
+<!-- Announce Delete -->
+<%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
+  <p> <i class="far fa-trash-alt"></i> Delete announce</p>
+  <% end %>
+<% end %>
 </div>
+
+<!-- Back -->
+<i class="fas fa-arrow-left m-4"></i> <%= link_to  "BACK", root_path %>
+
+</div>
+
+
+
 <%# footer %>

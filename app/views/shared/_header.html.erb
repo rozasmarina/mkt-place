@@ -8,38 +8,43 @@
       <% end %>
     </div>
     <!---------- Busca ---------->
-    <div class="col-5">
+    <div class="col-4">
       <nav class=" navbar-light bg-light ">
         <form class="form-inline">
-          <input class="form-control btn-search-left" type="search" placeholder="Busque por produtos ou categorias" aria-label="Search">
-          <button class="btn btn-primary my-2 my-sm-0 btn-search-right" type="submit">Buscar</button>
+          <%= render 'shared/form', announces: get_all_announces %>
+          <% if @search.present? && @announces.empty? %>
+            <p>No matches found</p>
+          <% elsif @search.present? && @search["name"] != '' %>
+            <p>There are <%= @announces.count %> announces for <%= @search["name"] %></p>
+          <% end %>
         </form>
       </nav>
     </div>
+    <!---------- current_user menu ---------->
     <!---------- Criar anuncio ---------->
     <% if current_user %>
-      <div class="col-2 ">
+      <div class="col-1 ">
         <%= link_to new_user_announce_path(current_user), class: "btn-announce colors" do %>
-          Create your ad<br> for free <i class="fas fa-bullhorn"></i>
+          Create your ad<br>
+          for free <i class="fas fa-bullhorn"></i>
         <% end %>
       </div>
-    <% end %>
-    <!---------- Idioma ---------->
-    <% if current_user %>
+      
+      <div class="col-1">
+        <%= "Welcome, #{current_user.first_name}" %>
+      </div>
       <!--Edit Profile-->
       <div class="col-1">
         <%= link_to edit_user_registration_path, class:"btn-langue colors" do %>
           <i class="fas fa-user-edit"></i> Edit profile
         <% end %>
       </div>
-      
       <!--Profile-->
       <div class="col-1">
         <%= link_to user_path(current_user), class:"btn-langue colors" do %>
           <i class="far fa-id-badge"></i> Your profile
         <% end %>
       </div>
-
       <!--Logout-->
       <div class="col-1">
         <%= link_to destroy_user_session_path, method: :delete, class:"btn-langue colors" do %>
@@ -49,20 +54,20 @@
     <% end %>
     <!------------ Not logged ------------>
     <% unless current_user %>
-    <!---------- Login ---------->
-    <div class="col-1">
-      <%= link_to new_user_session_path, class: "btn-login colors" do %>
-        <i class="far fa-user"></i>Sign in
-      <% end %> 
-    </div>     
-    <!---------- Sign Up ---------->
-    <div class="col-1">
-      <%= link_to new_user_registration_path, class: "btn-login colors" do %>
-        <i class="fas fa-user-plus"></i></i>Sign up
-      <% end %> 
-    </div>   
-    <% end %>
-  </div>
+      <!---------- Login ---------->
+      <div class="col-1">
+        <%= link_to new_user_session_path, class: "btn-login colors" do %>
+          <i class="far fa-user"></i>Sign in
+        <% end %>
+      </div>
+      <!---------- Sign Up ---------->
+      <div class="col-1">
+        <%= link_to new_user_registration_path, class: "btn-login colors" do %>
+          <i class="fas fa-user-plus"></i></i>Sign up
+      <% end %>
+    </div>
+  <% end %>
+</div>
 </header>
 <!--======== Navbar ========-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light menu-nav">

@@ -1,5 +1,0 @@
-<%= simple_form_for :search, url: root_path, method: 'GET', html: { class: 'form-inline my-2 my-lg-0 align-self-end' } do |f| %>
-  <%= f.input :name, label: false, input_html: {placeholder:  'Looking for something?', value: ""} %>
-  <%# the input_html blank default is to reset the form on page reload %>
-  <%= f.submit "Search", class: "btn btn-outline-secondary my-2 my-sm-0" %>
-<% end %>

@@ -5,3 +5,9 @@
 @import "header";
 @import "footer";
 @import "cards";
+
+body {
+  padding-bottom: 100px;
+  min-height: 97vh;
+  position: relative;
+}

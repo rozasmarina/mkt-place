@@ -41,6 +41,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'money-rails', '~>1.12'
 gem 'stripe', '~> 5.24'
 gem 'stripe_event'
+gem 'ngrok'
 
 group :development, :test do
   gem 'pry-byebug'

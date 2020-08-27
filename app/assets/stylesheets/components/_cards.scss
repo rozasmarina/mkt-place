@@ -5,12 +5,27 @@
 .card {
    h5 {
      font-size: 1.5rem;
+     color: $green;
    } 
+   
+   a:hover{
+       text-decoration: none;
+   }
+
    p {
-
+     color: $black;
+     text-decoration: none;
    }
 
-   img:hover {
+   
+}
 
-   }
+.card:hover {
+    h5 {
+        color: $yellow;
+    }
+
+    img {
+        filter: saturate(200%);
+      }
 }

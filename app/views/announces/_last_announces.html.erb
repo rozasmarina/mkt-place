@@ -6,10 +6,10 @@
         <div class="card-body">
         <% if announce.photo.present? %>
           <div class="card-image">
-            <%= cl_image_tag announce.photo.key, crop: :fill, class: "img-fluid mb-2" %>
+            <%= cl_image_tag announce.photo.key, crop: :fill, class: "img-fluid mb-2 rounded" %>
           </div>
           <% end %>
-          <h5 class="card-title"> <strong> <%= announce.product_name %> </strong> </h5>
+          <span class="title-announce"><h5 class="card-title"> <strong> <%= announce.product_name%> </strong> </span></h5>
           <p class="card-text"> <%= announce.product_description %></p>
           <p class="card-text"> <strong><i class="fas fa-dollar-sign"></i> <%= number_to_currency(announce.price, precision: 2, unit: "")  %> </strong></p>
         </div>

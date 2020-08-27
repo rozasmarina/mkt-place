@@ -37,6 +37,8 @@ gem 'faker'
 gem 'rubocop', '~> 0.89.1', require: false
 gem 'cloudinary', '~> 1.12.0'
 
+gem 'money-rails', '~>1.12'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

@@ -25,8 +25,8 @@ class User < ApplicationRecord
             format: { with: /\A(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})\z/,
                       message: "Entre um e-mail válido" }
   validates :username,
-            format: { with: /\A(?=[a-zA-Z0-9._-]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]\z/,
-                      message: "Deve ter entre 8 e 20 caracateres" }
+            format: { with: /\A(?=[a-zA-Z0-9._-]{5,20}$)(?!.*[_.]{2})[^_.].*[^_.]\z/,
+                      message: "Deve ter entre 5 e 20 caracateres" }
 
   def set_default_avatar
     unless photo.attached?

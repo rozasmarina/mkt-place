@@ -1,8 +1,11 @@
 <%# navbar %>
 <div class="container">
+  <% if @announce.photo.blank? %>
+  <% else %>
     <div class="photo-show">
       <%= cl_image_tag  @announce.photo.key, height: 600, width: 800 %>
     </div>
+  <% end %>
   <div class="side-info-box">
     <div class="info-header">
       <h2><%= @announce.product_name %></h2>

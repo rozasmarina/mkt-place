@@ -65,7 +65,7 @@ sleep(1)
                                 quantity: quantity,
                                 announce_type: announce_type,
                                 user: user)
-    thumb_url = "http://lorempixel.com/output/technics-q-c-1280-720-/#{announce.id}.jpg"
+    thumb_url = "http://lorempixel.com/output/technics-q-c-1280-720-#{rand(1..10)}.jpg"
     thumb = URI.open(thumb_url)
     announce.photo.attach(io: thumb, filename: "#{user.username}.png", content_type: 'image/png')
     puts "Announce for #{announce.product_name} created"

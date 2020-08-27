@@ -14,6 +14,21 @@
   <div class="side-info-box card container pt-3 card-body">
     <div class="info-header">
       <h1 class="show-name"> <%= @announce.product_name %> </h1>
+    </div>
+    <div class="info-price">
+      <p><i class="fas fa-dollar-sign"></i> <%= @announce.price %></p>
+      <%# if we need to show currency symbol, use: humanized_money_with_symbol(@announce.price) %>
+      <%# Using Money rails there's no need for: number_to_currency(@announce.price, precision: 2, unit: "")  %>
+    </div>
+    <div class="info-vendor-category">
+      <p>Sold by <%= @announce.user.username  %></p>
+      <p>In <%= @announce.product_category  %></p>
+    </div>
+    <% if @announce.user != current_user %>
+      <div class="btn btn-success buy-item">
+        <%= link_to  "Buy", new_announce_order_path(@announce) %>
+      </div>
+    <% end %>
   </div>
 
   <!-- Product Price -->

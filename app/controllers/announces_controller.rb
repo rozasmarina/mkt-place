@@ -6,7 +6,12 @@ class AnnouncesController < ApplicationController
     @search = params['search']
     if @search.present? && @search["name"] != ''
       @name = @search["name"]
-      @announces = Announce.where("lower(product_name) ILIKE ?", "%#{@name.downcase}%")
+      query = "product_name @@ :query
+              OR product_description @@ :query"
+      # @@ => full text search do postgresql. O ILIKE nao pega palavra a palavra
+      # trigrams search => ao inves de pegar palavra em palavra, quebra de 3 em 3 letras
+      # para usar trigrams no postgresql, usar a gem PG SEARCH
+      @announces = Announce.where(query, query: "%#{@name}%")
     else
       @announces = Announce.all
       @gallery_announces = Announce.where("announce_type = ?", "Gallery")

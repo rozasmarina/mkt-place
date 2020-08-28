@@ -1,20 +1,23 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8 col-sm-10">
-      <h2 class="mb-4">Create a new announce</h2>
-      <%= simple_form_for [@user, @announce] do |f| %>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-        <%= f.input :product_name %>
-        <%= f.input :product_description %>
-        <%= f.input :price %>
-        <%= f.input :quantity %>
-        <%= f.input :product_category %>
-        <%= f.input :photo, :label => 'Send a image', as: :file %>
-        <%= f.input :announce_type, as: :radio_buttons, collection: %w[Gallery Top Free] %>
-        <%= f.button :submit, class: "btn btn-success m-4" %>
-        <%= link_to  "Go back", root_path, class: "btn btn-success" %>
-      <% end %>
+<div class="container d-flex justify-content-center align-content-center align-items-center mt-5 mb-5"  style="width: 500px;"">
+  <div class="side-info-box bg-light card-body shadow-sm r-border-card f-color">
+    <div class="row justify-content-center align-item-center">
+      <div class="p-0 col-lg-10 col-md-10 col-sm-10">
+        <h2 class="mb-5 mt-3" style="text-align: center;">Create new ad</h2>
+        <%= simple_form_for [@user, @announce] do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <%= f.input :product_name %>
+          <%= f.input :product_description %>
+          <%= f.input :price %>
+          <%= f.input :quantity %>
+          <%= f.input :product_category %>
+          <%= f.input :photo, :label => 'Send a image', as: :file %>
+          <%= f.input :announce_type, as: :radio_buttons, collection: %w[Gallery Top Free] %>
+          <div class="row justify-content-center">
+            <%= f.button :submit, class: "btn btn-success m-4" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

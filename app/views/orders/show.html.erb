@@ -1,11 +1,30 @@
-<h1>Details of <%= @order.id %></h1>
-<p>Product: <%= @order.announce.product_name %></p>
-<p>Price: <%= @order.price %></p>
-<p>Quantity: <%= @order.quantity %></p>
+<div class="container border">
+  <div class="row py-4">
+    <%# <div class="col-md-3"><%= image_tag @order.announce.photo, width: '100%' %><%#</div> %>
+    <div class="col">
+      <h1>Order #<%= @order.id %> <small><span class="badge badge-primary"><%= @order.state %></span></small></h1>
+      <ul class="list-unstyled">
+        <li><strong>ISSUED ON</strong> <%= @order.created_at.to_date %></li>
+        <% if @order.announce.user.username == current_user.username %>
+          <p><strong>To user: </strong><%= @order.user.username %></p>
+        <% else %>
+          <p><strong>From user: </strong><%= @order.announce.user.username %></p>
+        <% end %>
+        <li><strong>PRODUCT</strong> <%= @order.announce.product_name %></li>
+        <li><strong>TOTAL</strong> <%= @order.price * @order.quantity %></li>
+        </li>
+      </ul>
+      <p>Estimated delivery in <strong><%= rand(1..7) %> business days after payment</strong></p>
 
-<% if @order.announce.user.username == current_user.username %>
-  <p>To user: <%= @order.user.username %></p>
-<% else %> 
-  <p>From user: <%= @order.announce.user.username %></p>
-<% end %>
-<p>When: <%= @order.created_at %></p>
+      <% if current_user == @order.user %>
+        <% if @order.state == "pending" && @order.quantity > @order.announce.quantity %>
+          <p>There isn't enough stock to fulfill your order anymore.</p>
+        <% elsif @order.state == "pending" %>
+          <%= link_to 'Pay for your order now', new_order_payment_path(@order) %>
+        <% end %>
+      <% end %>
+      
+    </div>
+  </div>
+</div>
+</div>

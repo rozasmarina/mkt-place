@@ -10,13 +10,12 @@
     <!---------- Busca ---------->
     <div class="col-4 container">
       <nav class=" navbar-light bg-light ">
-          <%= render 'shared/form', announces: @announces %>
-          <%# if @search.present? && @announces.empty? %>
-            <%# <p>No matches found</p> %>
-          <%# elsif @search.present? && @search["name"] != '' %>
-            <%# <p>There are <%= @announces.count %><%# announces for <%#= @search["name"] %><%#</p> %>
-          <%# end %>
-
+        <%= render 'shared/form', announces: @announces %>
+        <%# if @search.present? && @announces.empty? %>
+        <%# <p>No matches found</p> %>
+        <%# elsif @search.present? && @search["name"] != '' %>
+        <%# <p>There are <%= @announces.count %><%# announces for <%#= @search["name"] %><%#</p> %>
+        <%# end %>
       </nav>
     </div>
     <!---------- current_user menu ---------->
@@ -28,7 +27,6 @@
           for free <i class="fas fa-bullhorn"></i>
         <% end %>
       </div>
-      
       <div class="col-1">
         <%= "Welcome, #{current_user.first_name}" %>
       </div>
@@ -68,6 +66,3 @@
   <% end %>
 </div>
 <% end %>
-
-
-

@@ -6,10 +6,11 @@
 @import "footer";
 @import "cards";
 @import "show";
-
-
 body {
-  padding-bottom: 100px;
-  min-height: 97vh;
-  position: relative;
+    padding-bottom: 100px;
+    min-height: 97vh;
+    position: relative;
+    a:hover {
+        text-decoration: none;
+    }
 }

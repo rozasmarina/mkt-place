@@ -14,7 +14,7 @@ class AnnouncesController < ApplicationController
       @announces = Announce.where(query, query: "%#{@search}%").order(created_at: :desc)
     else
       @announces = Announce.all
-      @gallery_announces = Announce.where("announce_type = ?", "Gallery")
+      @gallery_announces = Announce.where("announce_type = ?", "Gallery").order(created_at: :desc)
       # @highlight_announces = Announce.where("announce_type = ?", "Highlight")
       @top_announces = Announce.where("announce_type = ?", "Top").order(created_at: :desc)
       @free_announces = Announce.where("announce_type = ?", "Free")

@@ -1,30 +1,41 @@
-<div class="container border">
+<div class="container">
   <div class="row py-4">
     <%# <div class="col-md-3"><%= image_tag @order.announce.photo, width: '100%' %><%#</div> %>
-    <div class="col">
+    <div class="col card m-4 r-border-card py-5" >
       <h1>Order #<%= @order.id %> <small><span class="badge badge-primary"><%= @order.state %></span></small></h1>
       <ul class="list-unstyled">
         <li><strong>ISSUED ON</strong> <%= @order.created_at.to_date %></li>
+        <br>
         <% if @order.announce.user.username == current_user.username %>
           <p><strong>To user: </strong><%= @order.user.username %></p>
+          <p><strong>CONTACT INFO:</strong></p>
+          <p><strong>Email: </strong> <%= @order.user.email %></p>
+          <p><strong>Phone number: </strong> <%= @order.user.phone_number %></p>
         <% else %>
           <p><strong>From user: </strong><%= @order.announce.user.username %></p>
+          <p><strong>CONTACT INFO:</strong></p>
+          <p><strong>Email: </strong> <%= @order.announce.user.email %></p>
+          <p><strong>Phone number: </strong> <%= @order.announce.user.phone_number %></p>
         <% end %>
         <li><strong>PRODUCT</strong> <%= @order.announce.product_name %></li>
-        <li><strong>TOTAL</strong> <%= @order.price * @order.quantity %></li>
+        <li><strong>Quantity: </strong><%= @order.quantity %></li>
+        <li class="show-price font-weight-normal f-color"> 
+          <i class="fas fa-dollar-sign sz-fav"> </i> <%= @order.price * @order.quantity %>   
         </li>
       </ul>
       <p>Estimated delivery in <strong><%= rand(1..7) %> business days after payment</strong></p>
 
       <% if current_user == @order.user %>
         <% if @order.state == "pending" && @order.quantity > @order.announce.quantity %>
-          <p>There isn't enough stock to fulfill your order anymore.</p>
+          <p>There isn't enough stock to fulfill your order anymore. </p>
         <% elsif @order.state == "pending" %>
-          <%= link_to 'Pay for your order now', new_order_payment_path(@order) %>
+          <%= link_to 'Pay for your order now', new_order_payment_path(@order), class: 'btn btn-success' %>
         <% end %>
       <% end %>
-      
     </div>
   </div>
-</div>
+  
+  <%= link_to user_path(@order.user) do %>
+    <i class="fas fa-arrow-left m-4"></i> Back to profile
+  <% end %>
 </div>

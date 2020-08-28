@@ -4,19 +4,19 @@ class AnnouncesController < ApplicationController
 
   def index
     @search = params['search']
-    if @search.present? && @search["name"] != ''
-      @name = @search["name"]
+    if @search.present? && @search != ''
+      # @name = @search["name"]
       query = "product_name @@ :query
               OR product_description @@ :query"
       # @@ => full text search do postgresql. O ILIKE nao pega palavra a palavra
       # trigrams search => ao inves de pegar palavra em palavra, quebra de 3 em 3 letras
       # para usar trigrams no postgresql, usar a gem PG SEARCH
-      @announces = Announce.where(query, query: "%#{@name}%")
+      @announces = Announce.where(query, query: "%#{@search}%").order(created_at: :desc)
     else
       @announces = Announce.all
       @gallery_announces = Announce.where("announce_type = ?", "Gallery")
-      @highlight_announces = Announce.where("announce_type = ?", "Highlight")
-      @top_announces = Announce.where("announce_type = ?", "Top")
+      # @highlight_announces = Announce.where("announce_type = ?", "Highlight")
+      @top_announces = Announce.where("announce_type = ?", "Top").order(created_at: :desc)
       @free_announces = Announce.where("announce_type = ?", "Free")
     end
   end

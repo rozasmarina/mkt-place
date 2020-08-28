@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container border">
   <div class="row py-4">
     <%# <div class="col-md-3"><%= image_tag @order.announce.photo, width: '100%' %><%#</div> %>
     <div class="col">
@@ -12,9 +12,19 @@
         <% end %>
         <li><strong>PRODUCT</strong> <%= @order.announce.product_name %></li>
         <li><strong>TOTAL</strong> <%= @order.price * @order.quantity %></li>
-      </li>
-    </ul>
-    <p>Estimated delivery in <strong><%= rand(1..7) %> business days</strong></p>
+        </li>
+      </ul>
+      <p>Estimated delivery in <strong><%= rand(1..7) %> business days after payment</strong></p>
+
+      <% if current_user == @order.user %>
+        <% if @order.state == "pending" && @order.quantity > @order.announce.quantity %>
+          <p>There isn't enough stock to fulfill your order anymore.</p>
+        <% elsif @order.state == "pending" %>
+          <%= link_to 'Pay for your order now', new_order_payment_path(@order) %>
+        <% end %>
+      <% end %>
+      
+    </div>
   </div>
 </div>
 </div>

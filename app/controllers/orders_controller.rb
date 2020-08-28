@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def show
     @order = Order.find(params[:id])
     redirect_to root_path unless @order.announce.user == current_user || @order.user == current_user
@@ -13,12 +12,12 @@ class OrdersController < ApplicationController
   def create
     announce = Announce.find(params[:announce_id])
     order = Order.create!(
-                announce: announce,
-                user: current_user,
-                state: 'pending',
-                quantity: order_params['quantity'],
-                price: announce.price
-                )
+      announce: announce,
+      user: current_user,
+      state: 'pending',
+      quantity: order_params['quantity'],
+      price: announce.price
+    )
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -35,11 +34,20 @@ class OrdersController < ApplicationController
 
     order.update(checkout_session_id: session.id)
     redirect_to new_order_payment_path(order)
-
+    
+    ### Logica para mudar o active do announce após a order ser feita
+    ### ver como fica com a implementacao do status pending
+    # order.update(checkout_session_id: session.id)
+    # redirect_to new_order_payment_path(order)
     # if @order.save
     #   @announce.quantity -= @order.quantity
     #   @announce.update_attribute(:quantity, @announce.quantity)
-    #   redirect_to announce_path(@announce)
+    #   if @announce.quantity.zero?
+    #     @announce.update_attribute(:active, false)
+    #     redirect_to announces_path
+    #   else
+    #     redirect_to announce_path(@announce)
+    #   end
     # else
     #   render :new
     # end

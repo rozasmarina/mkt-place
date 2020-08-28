@@ -1,89 +1,141 @@
-<!--======== Header ========-->
-<header class="header-top">
-  <div class="row align-items-center">
-    <!---------- Logo ----------->
-    <div class="col-3">
-      <%= link_to root_path do %>
-        <%= image_tag 'logo_hand.png', class: 'logo' %>
-      <% end %>
-    </div>
-    <!---------- Busca ---------->
-    <div class="col-4 container">
-      <nav class=" navbar-light bg-light ">
+<!---------- Not Logged ----------->
+<% unless current_user %>
+  <!--======== Header ========-->
+  <nav class="navbar navbar-expand-lg fixed-top d-flex shadow-sm header-top">
+    <div class="row align-items-center justify-content-between">
+      <!---------- Logo ----------->
+      <div class="">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo_hand.png', class: 'logo img-fluid' %>
+        <% end %>
+      </div>
+      <!---------- current_user menu ---------->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse col-md-9 d-flex justify-content-around w-100" style="flex-grow: 2;" id="navbarSupportedContent">
+        <!---------- Busca ---------->
+        <div class="nav-item" style="flex-grow: 2;">
           <%= render 'shared/form', announces: @announces %>
           <%# if @search.present? && @announces.empty? %>
-            <%# <p>No matches found</p> %>
+          <%# <p>No matches found</p> %>
           <%# elsif @search.present? && @search["name"] != '' %>
-            <%# <p>There are <%= @announces.count %><%# announces for <%#= @search["name"] %><%#</p> %>
+          <%# <p>There are <%= @announces.count %><%# announces for <%#= @search["name"] %><%#</p> %>
           <%# end %>
-
-      </nav>
-    </div>
-    <!---------- current_user menu ---------->
-    <!---------- Criar anuncio ---------->
-    <% if current_user %>
-      <div class="col-1 ">
-        <%= link_to new_user_announce_path(current_user), class: "btn-announce colors" do %>
-          Create your ad<br>
-          for free <i class="fas fa-bullhorn"></i>
-        <% end %>
-      </div>
-      
-      <div class="col-1">
-        <%= "Welcome, #{current_user.first_name}" %>
-      </div>
-      <!--Edit Profile-->
-      <div class="col-1">
-        <%= link_to edit_user_registration_path, class:"btn-langue colors" do %>
-          <i class="fas fa-user-edit"></i> Edit profile
-        <% end %>
-      </div>
-      <!--Profile-->
-      <div class="col-1">
-        <%= link_to user_path(current_user), class:"btn-langue colors" do %>
-          <i class="far fa-id-badge"></i> Your profile
-        <% end %>
-      </div>
-      <!--Logout-->
-      <div class="col-1">
-        <%= link_to destroy_user_session_path, method: :delete, class:"btn-langue colors" do %>
-          <i class="fas fa-sign-out-alt"></i> Logout
-        <% end %>
-      </div>
-    <% end %>
-    <!------------ Not logged ------------>
-    <% unless current_user %>
-      <!---------- Login ---------->
-      <div class="col-1">
+        </div>
+        <!---------- Criar anuncio ---------->
+        <!------------ Not logged ------------>
+        <!---------- Login ---------->
         <%= link_to new_user_session_path, class: "btn-login colors" do %>
-          <i class="far fa-user"></i>Sign in
+          <span class="px-5 mx-5"><i class="far fa-user"></i> Sign in</span>
         <% end %>
-      </div>
-      <!---------- Sign Up ---------->
-      <div class="col-1">
+        <!---------- Sign Up ---------->
         <%= link_to new_user_registration_path, class: "btn-login colors" do %>
-          <i class="fas fa-user-plus"></i></i>Sign up
+          <span class="px-5 mx-5"><i class="fas fa-user-plus"></i></i> Sign up</span>
       <% end %>
     </div>
-  <% end %>
+    <!--======== Navbar ========-->
+    <div class="btn-group row justify-content-between d-flex px-2" role="group" style="flex-grow: 4;">
+      <div>
+        <button id="btnGroupDrop1 " type="button" class="btn btn-secondary dropdown-toggle btn-category btn-all-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          All Categories
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1 ">
+          <a class="dropdown-item box-dropdown" href="#">Categoria</a>
+          <a class="dropdown-item" href="#">Categoria</a>
+        </div>
+      </div>
+      <div class="" style="flex-grow: 4;">
+        <div class="btn-group w-100" role="group" aria-label="Button group with nested dropdown">
+          <button type="button" class="btn btn-secondary btn-category">Animal Planet</button>
+          <button type="button" class="btn btn-secondary btn-category">Vêtements & Accessoires</button>
+          <button type="button" class="btn btn-secondary btn-category">Reprise de bail</button>
+          <button type="button" class="btn btn-secondary btn-category">Immobilier - Ventes</button>
+          <button type="button" class="btn btn-secondary btn-category">Immobilier - locations</button>
+          <button type="button" class="btn btn-secondary btn-category">Voitures de tourisme</button>
+          <button type="button" class="btn btn-secondary btn-category">Offre d’emploi</button>
+          <button type="button" class="btn btn-secondary btn-category">Erotique</button>
+        </div>
+      </div>
+    </div>
+  </nav>
 </div>
-</header>
-<!--======== Navbar ========-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light menu-nav">
-  <div class="btn-group" role="group">
-    <button id="btnGroupDrop1 " type="button" class="btn btn-secondary dropdown-toggle btn-category btn-all-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      ALL CATEGORIES
-    </button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1 ">
-      <a class="dropdown-item" href="#">Category</a>
-      <a class="dropdown-item" href="#">Category</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-      <button type="button" class="btn btn-secondary btn-category">Animal Planet</button>
-      <button type="button" class="btn btn-secondary btn-category">Clothing & Accessories</button>
-      <button type="button" class="btn btn-secondary btn-category">Real Estate - Sales</button>
-      <button type="button" class="btn btn-secondary btn-category">Real Estate - Rentals</button>
-      <button type="button" class="btn btn-secondary btn-category">Passenger Cars</button>
-    </div>
+</div>
+<% end %>
+<!---------- Logged ----------->
+<% if current_user %>
+  <!--======== Header ========-->
+  <nav class="navbar navbar-expand-lg fixed-top d-flex shadow-sm header-top">
+    <div class="row align-items-center justify-content-between">
+      <!---------- Logo ----------->
+      <div class="">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo_hand.png', class: 'logo img-fluid' %>
+        <% end %>
+      </div>
+      <!---------- current_user menu ---------->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarSupportedContent">
+        <!---------- Busca ---------->
+        <div class="nav-item" style="flex-grow: 2;">
+          <%= render 'shared/form', announces: @announces %>
+          <%# if @search.present? && @announces.empty? %>
+          <%# <p>No matches found</p> %>
+          <%# elsif @search.present? && @search["name"] != '' %>
+          <%# <p>There are <%= @announces.count %><%# announces for <%#= @search["name"] %><%#</p> %>
+          <%# end %>
+        </div>
+        <!---------- Criar anuncio ---------->
+        <%= link_to new_user_announce_path(current_user), class: "btn-announce colors" do %>
+          <span class="px-2 mx-2">Create your ad for free <i class="fas fa-bullhorn"></i></span>
+        <% end %>
+        <ul class="navbar-nav mr-1 px-2 mx-2">
+          <li class="nav-item dropdown">
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-right shadow-sm" aria-labelledby="navbarDropdown">
+              <!--Profile-->
+              <%= link_to user_path(current_user), class:"btn-langue colors dropdown-item" do %>
+                <i class="far fa-id-badge"></i> Your profile
+              <% end %>
+              <!--Edit Profile-->
+              <%= link_to edit_user_registration_path, class:"btn-langue colors dropdown-item" do %>
+                <i class="fas fa-user-edit"></i> Edit profile
+              <% end %>
+              <!--Logout-->
+              <%= link_to destroy_user_session_path, method: :delete, class:"btn-langue colors dropdown-item" do %>
+                <i class="fas fa-sign-out-alt"></i> Logout
+              <% end %>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!--======== Navbar ========-->
+      <div class="btn-group row justify-content-between d-flex px-2" role="group" style="flex-grow: 4;">
+        <div>
+          <button id="btnGroupDrop1 " type="button" class="btn btn-secondary dropdown-toggle btn-category btn-all-category" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            All Categories
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1 ">
+            <a class="dropdown-item box-dropdown" href="#">Categoria</a>
+            <a class="dropdown-item" href="#">Categoria</a>
+          </div>
+        </div>
+        <div class="" style="flex-grow: 4;">
+          <div class="btn-group w-100" role="group" aria-label="Button group with nested dropdown">
+            <button type="button" class="btn btn-secondary btn-category">Animal Planet</button>
+            <button type="button" class="btn btn-secondary btn-category">Vêtements & Accessoires</button>
+            <button type="button" class="btn btn-secondary btn-category">Reprise de bail</button>
+            <button type="button" class="btn btn-secondary btn-category">Immobilier - Ventes</button>
+            <button type="button" class="btn btn-secondary btn-category">Immobilier - locations</button>
+            <button type="button" class="btn btn-secondary btn-category">Voitures de tourisme</button>
+            <button type="button" class="btn btn-secondary btn-category">Offre d’emploi</button>
+            <button type="button" class="btn btn-secondary btn-category">Erotique</button>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
-</nav>
+</div>
+<% end %>

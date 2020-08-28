@@ -18,9 +18,13 @@
     <%# PROFILE TAB %>
     <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <div class="container py-5">
+        <div class="d-flex align-content-center">
+          <%= cl_image_tag current_user.photo.key, class: "p-3", width: 150, style:"border-radius: 50%;" %>
+        </div>
         <p><strong>Username:</strong> <%= current_user.username %></p>
         <br>
         <p><strong>First name:</strong> <%= current_user.first_name %></p>
+        <br>
         <p><strong>Last name:</strong> <%= current_user.last_name %></p>
         <br>
         <p><strong>CPF:</strong> <%= current_user.cpf %></p>
@@ -31,9 +35,6 @@
         <br>
         <p><strong>Phone number:</strong> <%= current_user.phone_number  %></p>
         <br>
-        <%= link_to edit_user_registration_path, class:"btn-langue colors" do %>
-          <i class="fas fa-user-edit"></i> Edit profile
-        <% end %>
       </div>
     </div>
     <%# ANNOUNCES TAB %>

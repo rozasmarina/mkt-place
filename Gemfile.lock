@@ -303,7 +303,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   money-rails (~> 1.12)
-  ngrok (~> 1.6, >= 1.6.1)
+  ngrok
   pg (>= 0.18, < 2.0)
   pry-byebug
   pry-rails

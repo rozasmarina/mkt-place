@@ -1,10 +1,12 @@
-<%= form_tag root_path, method: :get, class: 'form-inline my-2 my-lg-0 align-self-end' do %>
-  <%= text_field_tag :search,
+<%= form_tag root_path, method: :get, class: 'my-2 my-lg-0 form-inline' do %>
+  <div class="form-row w-100 d-flex justify-content-center align-items-center">
+    <%= text_field_tag :search,
     params[:search],
     label: false,
     value: params[:search],
     class: "form-control btn-search-left",
     placeholder: "Search products"
   %>
-  <%= submit_tag "Search", class: "btn btn-success my-2 my-sm-0 btn-search-right" %>
+    <%= submit_tag "Search", class: "btn btn-success my-2 my-sm-0 btn-search-right" %>
+  </div>
 <% end %>

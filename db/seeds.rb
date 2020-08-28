@@ -51,12 +51,12 @@ sleep(1)
   avatar = URI.open(avatar_url)
   user.photo.attach(io: avatar, filename: "#{user.username}.png", content_type: 'image/png')
   puts "#{user.username} created"
-  rand(3..10).times do
+  rand(4..10).times do
     product_name = Faker::Commerce.product_name
-    product_category = Faker::Commerce.department
+    product_category = %w[Beauty Clothing Garden Grocery Health Home Jewelry Kids Music Shoes Sports Tools Toys].sample
     product_description = Faker::Lorem.paragraphs.join.to_s
     price = Faker::Commerce.price
-    quantity = rand(1..10)
+    quantity = rand(1..15)
     announce_type = %w[Gallery Top Free].sample.to_s
     announce = Announce.create!(product_name: product_name,
                                 product_category: product_category,
@@ -73,16 +73,18 @@ sleep(1)
 end
 
 puts "Generating orders..."
-rand(20..50).times do
+rand(20..60).times do
   announce = Announce.find(rand(1..Announce.count))
   buyer = User.find(rand(1..User.count))
   price = rand(20.0..200.0).round(2)
   quantity = rand(1..announce.quantity)
+  state = %w[paid pending paid paid].sample
   Order.create!(
     price: price,
     quantity: quantity,
     user: buyer,
-    announce: announce
+    announce: announce,
+    state: state
   )
   puts "#{buyer.username} bought a #{announce.product_name} from #{announce.user.username}"
 end

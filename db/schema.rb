@@ -52,8 +52,6 @@ ActiveRecord::Schema.define(version: 2020_08_27_173230) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "quantity"
-    t.string "checkout_session_id"
-    t.string "state"
     t.bigint "announce_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

@@ -59,30 +59,26 @@
     
     <%# SALES TAB %>
     <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="sales-tab">
-      <%# if @user.announces %>
-        <div class="d-flex justify-content-start flex-wrap">
-            <% @user.announces.each do |announce| %>
-              <% announce.orders.each do |order|%>
-                <% if order %>
-                  <div class="card m-2" style="width: 18rem;">
-                    <%= image_tag "http://picsum.photos/200/200?random=#{order.id+20}" %>
-                    <div class="card-body">
-                      <h5 class="card-title"><%= order.announce.product_name %></h5>
-                      <%= link_to "Veja mais", order_path(order), class: "btn btn-success" %>
-                    </div>
-                  </div>
-                <% end %>
-              <% end %>
+      <div class="d-flex justify-content-start flex-wrap">
+        <% @user.announces.each do |announce| %>
+          <% announce.orders.each do |order|%>
+            <% if order %>
+              <div class="card m-2" style="width: 18rem;">
+                <%= image_tag "http://picsum.photos/200/200?random=#{order.id+20}" %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= order.announce.product_name %></h5>
+                  <%= link_to "Veja mais", order_path(order), class: "btn btn-success" %>
+                </div>
+              </div>
             <% end %>
-        </div>
-      <%# else %>
-        <!--<p>You still haven't sold anything. </p>
-      <% end %> -->   
+          <% end %>
+        <% end %>
+      </div>   
     </div>
     
     <%# ORDERS TAB %>
     <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-      <% if true %>
+      <% if @user.orders.present? %>
         <div class="d-flex justify-content-start flex-wrap">
           <% @user.orders.each do |order|%>
             <div class="card m-2" style="width: 18rem;">
@@ -95,7 +91,7 @@
           <% end %>
         </div> 
       <% else %>
-        <p>You still haven't bought anything.</p>
+        <div><p>You still haven't bought anything.</p></div>
       <% end %>
     </div>
   </div>

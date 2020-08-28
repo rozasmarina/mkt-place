@@ -4,5 +4,6 @@ class StripeCheckoutSessionService
     order.update(state: 'paid')
     new_announce_quantity = order.announce.quantity - order.quantity
     order.announce.update_attribute(:quantity, new_announce_quantity)
+    order.announce.update_attribute(active: false) if order.announce.quantity.zero?
   end
 end

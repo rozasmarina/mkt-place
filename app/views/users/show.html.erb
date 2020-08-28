@@ -40,7 +40,8 @@
     
     <%# ANNOUNCES TAB %>
     <div class="tab-pane fade" id="announces" role="tabpanel" aria-labelledby="announces-tab">
-      <div class="d-flex justify-content-start flex-wrap">
+      <% if @user.announces %>
+        <div class="d-flex justify-content-start flex-wrap">
           <% @user.announces.each do |announce| %>
             <div class="card m-2" style="width: 18rem;">
               <%= image_tag "http://picsum.photos/200/200?random=#{announce.id + 40}" %>
@@ -51,40 +52,51 @@
             </div>
           <% end %>
         </div>
+      <% else %>
+        <p>You still haven't announced anything. </p>
+      <% end %>
     </div>
     
     <%# SALES TAB %>
     <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="sales-tab">
-      <div class="d-flex justify-content-start flex-wrap">
-          <% @user.announces.each do |announce| %>
-            <% announce.orders.each do |order|%>
-              <% if order %>
-                <div class="card m-2" style="width: 18rem;">
-                  <%= image_tag "http://picsum.photos/200/200?random=#{order.id+20}" %>
-                  <div class="card-body">
-                    <h5 class="card-title"><%= order.announce.product_name %></h5>
-                    <%= link_to "Veja mais", order_path(order), class: "btn btn-success" %>
+      <%# if @user.announces %>
+        <div class="d-flex justify-content-start flex-wrap">
+            <% @user.announces.each do |announce| %>
+              <% announce.orders.each do |order|%>
+                <% if order %>
+                  <div class="card m-2" style="width: 18rem;">
+                    <%= image_tag "http://picsum.photos/200/200?random=#{order.id+20}" %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= order.announce.product_name %></h5>
+                      <%= link_to "Veja mais", order_path(order), class: "btn btn-success" %>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
         </div>
+      <%# else %>
+        <!--<p>You still haven't sold anything. </p>
+      <% end %> -->   
     </div>
     
     <%# ORDERS TAB %>
     <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-      <div class="d-flex justify-content-start flex-wrap">
-        <% @user.orders.each do |order|%>
-          <div class="card m-2" style="width: 18rem;">
-            <%= image_tag "http://picsum.photos/200/200?random=#{order.id}" %>
-            <div class="card-body">
-              <h5 class="card-title"><%= order.announce.product_name %></h5>
-              <%= link_to "Veja mais", order_path(order), class: "btn btn-success" %>
+      <% if true %>
+        <div class="d-flex justify-content-start flex-wrap">
+          <% @user.orders.each do |order|%>
+            <div class="card m-2" style="width: 18rem;">
+              <%= image_tag "http://picsum.photos/200/200?random=#{order.id}" %>
+              <div class="card-body">
+                <h5 class="card-title"><%= order.announce.product_name %></h5>
+                <%= link_to "Veja mais", order_path(order), class: "btn btn-success" %>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>    
+          <% end %>
+        </div> 
+      <% else %>
+        <p>You still haven't bought anything.</p>
+      <% end %>
     </div>
   </div>
 </div>

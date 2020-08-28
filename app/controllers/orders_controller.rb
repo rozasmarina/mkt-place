@@ -36,13 +36,6 @@ class OrdersController < ApplicationController
     order.update(checkout_session_id: session.id)
     redirect_to new_order_payment_path(order)
 
-    # if @order.save
-    #   @announce.quantity -= @order.quantity
-    #   @announce.update_attribute(:quantity, @announce.quantity)
-    #   redirect_to announce_path(@announce)
-    # else
-    #   render :new
-    # end
   end
 
   private

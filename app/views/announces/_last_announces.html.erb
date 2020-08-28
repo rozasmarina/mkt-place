@@ -1,19 +1,17 @@
-<!-- <div class="card-deck"> -->
-<div class="col-6 mb-3">
-  <div class="card r-border-card h-100">
-    <%= link_to announce_path(announce) do %>
-      <div class="card-body">
-        <% if announce.photo.present? %>
-          <div class="card-image ">
-            <%= cl_image_tag announce.photo.key, crop: :fill, class: "img-fluid r-border-pic mb-2 rounded" %>
-          </div>
-        <% end %>
-        <span class="title-announce">
-          <h5 class="card-title"> <strong> <%= announce.product_name%> </strong> </span></h5>
-        <p class="card-text"> <%= announce.product_description %></p>
-        <p class="card-text"> <strong><i class="fas fa-dollar-sign"></i> <%= number_to_currency(announce.price, precision: 2, unit: "")  %> </strong></p>
-      </div>
-    <% end %>
+<!-- Container Card -->
+<div class="col-md-6" style="padding-left: 30px;" >
+  <div class="card flex-md-row mb-4 box-shadow h-md-250 card-la">
+    <div class="card-body d-flex flex-column align-items-start">
+      <h3 class="mb-0">
+        <!-- Announces Title -->
+        <a class="text-dark card-title card-title" href="#"> <%= announce.product_name%> </a>
+      </h3>
+      <!-- Announces Description -->
+      <p class="card-text mb-auto"> <%= truncate(announce.product_description, length: 100 ) %> </p>
+      <!-- Announces Price -->
+      <p class="card-text"> <strong><i class="fas fa-dollar-sign"></i> <%= number_to_currency(announce.price, precision: 2, unit: "")  %> </strong></p>
+    </div>
+    <!-- Announces IMG -->
+    <img class="card-img-right flex-auto d-none d-md-block card-l"   src=" <%= cl_image_path announce.photo.key, crop: :fill, class: "img-fluid mb-2 card-l" %> " data-holder-rendered="true" style="width: 200px; height: 210px;">
   </div>
 </div>
-<!-- </div> -->

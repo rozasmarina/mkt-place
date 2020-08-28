@@ -31,44 +31,42 @@
                   </div>
                 <% end %>
               </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
   <!-- DEFAULT RESULTS-->
 <% else %>
   <div class="container">
     <!-- Galeria Premium -->
-    <div class= "">
-      <h2 class="w-100">Premium Gallery </h2>
-      <div class= "row">
-        <!-- Carousel Wrapper -->
-        <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-          <!-- Controls -->
-          <div class="controls-top">
-            <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-            <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-              class="fas fa-chevron-right"></i></a>
-          </div>
-          <!-- Slides -->
-          <div class="carousel-inner" role="listbox">
-            <!-- First slide -->
-            <% @gallery_announces.each_slice(4).with_index do |gallery, index| %>
-              <div class="carousel-item <%= "active" if index.zero?  %>">
-                <% gallery.each do |announce| %>
-                  <%= render "announces_premium",announce: announce %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
+    <div class= "row">
+      <h2 class="w-100">Premium Gallery</h2>
+      <!-- Carousel Wrapper -->
+      <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+        <!-- Controls -->
+        <div class="controls-top">
+          <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+          <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+            class="fas fa-chevron-right"></i></a>
+        </div>
+        <!-- Slides -->
+        <div class="carousel-inner" role="listbox">
+          <!-- First slide -->
+          <% @gallery_announces.each_slice(4).with_index do |gallery, index| %>
+            <div class="carousel-item <%= "active" if index.zero?  %>">
+              <% gallery.each do |announce| %>
+                <%= render "announces_premium",announce: announce %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
     <!-- Ultimos anuncios -->
-    <div class= "">
-      <h2 class="w-100 p-2">Latest additions</h2>
+    <div class= "my-4">
+      <h2 class="w-100 p-2 my-3">Latest Announces</h2>
       <div class="row">
         <% @top_announces.take(8).each do |announce| %>
           <%= render "last_announces",announce: announce %>

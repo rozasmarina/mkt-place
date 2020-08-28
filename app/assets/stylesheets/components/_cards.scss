@@ -1,5 +1,67 @@
-.cards {
+// --- GALLERY CARDS --- //
+
+// --- Gallery Card Container --- //
+.card-g {
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(206, 206, 206, 0.438);
+  height: 300px;
+}
+
+// --- Gallery Card img --- //
+.card-g-img {
+  height: 19em;
+  background-size: cover;
+  position: relative;
+  border-radius: 10px;
+  border: solid 2px #f3fbff;
+  box-shadow: 0 3px 5px #bac8cf7e;
+}
+
+// --- Gallery Card Title --- //
+.card-g-name {
+  padding: 0 15px;
+  text-align: center;
+  font-size: 20px !important;
+  height: 45px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-line;
+}
+
+// --- Gallery Card Btn Container --- //
+.btn-g {
+  color: #50505069;
+  padding: 4px 24px;
+  border-radius: 13px;
+  border: solid 1px #5050504a;
+  transition: background 0.3s ease;
+  text-decoration: none;
+
+  .btn-g:hover {
+    background: #d8d8d8;
+    border: solid 1px #d8d8d8;
+  }
+}
+
+.card-vitrine-info {
+  padding: 0 15px;
+  text-align: center;
+}
+
+// --- LATEST ANNOUNCES CARDS --- //
+
+// --- Latest Card Container --- //
+.card-la {
   border-style: none;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(206, 206, 206, 0.438);
+  height: 230px;
+  display: flex;
+  flex: 1 1 auto;
 }
 
 .card {
@@ -22,9 +84,27 @@
 .card:hover {
   h5 {
     color: $yellow;
+    
   }
 
   img {
     filter: saturate(200%);
   }
+}
+
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.card-title {
+  color: #20d8d9 !important;
+  font-weight: bold;
+}
+
+.card-l {
+  padding: 10px;
+  border-radius: 15px;
+  object-fit: cover;
 }

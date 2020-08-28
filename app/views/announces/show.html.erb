@@ -15,9 +15,13 @@
     </div>
     <!-- Product Price -->
     <div class="info-price">
-      <p class="show-price font-weight-normal f-color"> <i class="fas fa-dollar-sign sz-fav"> </i> <%= @announce.price %>
-        <!-- Quantity Badge -->
-        <span class="badge badge-qt align-middle">quantity available <%= @announce.quantity %> </span> </p>
+
+      <p class="show-price font-weight-normal f-color">
+      <i class="fas fa-dollar-sign sz-fav"> </i> <%= @announce.price %>
+
+      <!-- Quantity Badge -->
+      <span class="badge badge-qt align-middle">quantity available <%= @announce.quantity %> </span> </p>
+
       <!-- Btn Buy -->
       <% if @announce.user != current_user %>
         <%= link_to "BUY NOW", new_announce_order_path(@announce), class: "btn btn-info btn-position", style: "font-weight: bolder; color: white" %>
@@ -31,7 +35,7 @@
   <%# if we need to show currency symbol, use: humanized_money_with_symbol(@announce.price) %>
   <%# Using Money rails there's no need for: number_to_currency(@announce.price, precision: 2, unit: "")  %>
   <!-- Product Description -->
- 
+
 </div>
 <!-- For Profile Logged  -->
 <!-- Category / Sold by / Announce Type  -->

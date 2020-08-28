@@ -1,10 +1,13 @@
-<div class="col-md-3" style="float:left">
-  <div class="card mb-2">
-    <%= cl_image_tag announce.photo.key, width: 256, height: 144, crop: :fill %>
-    <div class="card-body">
-      <h4 class="card-title"><%= announce.product_name %></h4>
-      <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-      <%= link_to "see details", announce_path(announce), class: "btn btn-success" %>
+
+  <div class="col-md-3" style="float:left">
+    <div class="card mb-2 card-g card-g-img">
+      <%= cl_image_tag announce.photo.key, :width=>230, :height=>150, :gravity=>"face", :radius=>"5", :crop=>"fill" %>
+      
+      <div class="card-body text-center pb-0">
+        <h4 class="card-title card-g-name mb-4"> <%= announce.product_name %> </h4>
+        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+        <%= link_to "see details", announce_path(announce), class: "btn-g" %>
+      </div>
     </div>
   </div>
-</div>
+

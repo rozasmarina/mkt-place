@@ -20,8 +20,7 @@
         <span class="badge badge-qt align-middle">quantity available <%= @announce.quantity %> </span> </p>
       <!-- Btn Buy -->
       <% if @announce.user != current_user %>
-        <div class="btn btn-success">
-          <%= link_to  "BUY NOW", new_announce_order_path(@announce) %>
+        <%= link_to "BUY NOW", new_announce_order_path(@announce), class: "btn btn-info btn-position", style: "font-weight: bolder; color: white" %>
         </div>
       <% end %>
     </div>

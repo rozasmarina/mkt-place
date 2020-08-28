@@ -1,5 +1,4 @@
 <%= controller.redirect_to user_path(current_user) unless current_page?(user_path(current_user)) %>
-
 <div class="container">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -35,56 +34,64 @@
         <%= link_to edit_user_registration_path, class:"btn-langue colors" do %>
           <i class="fas fa-user-edit"></i> Edit profile
         <% end %>
-      </div>     
+      </div>
     </div>
-    
     <%# ANNOUNCES TAB %>
     <div class="tab-pane fade" id="announces" role="tabpanel" aria-labelledby="announces-tab">
-      <div class="d-flex justify-content-start flex-wrap">
+      <div class="d-flex flex-wrap">
+        <% if @user.announces %>
           <% @user.announces.each do |announce| %>
-            <div class="card m-2" style="width: 18rem;">
-              <%= image_tag "http://picsum.photos/200/200?random=#{announce.id + 40}" %>
+            <div class="card m-4 r-border-card" style="width: 18rem;">
+              <%= cl_image_tag announce.photo.key, class: "w-100 r-border-pic", width: 272, height: 204, crop: :fill %>
               <div class="card-body">
                 <h5 class="card-title"><%= announce.product_name %></h5>
-                <%= link_to "Veja mais", announce_path(announce), class: "btn btn-success" %>
+                <%= link_to "Check it out", announce_path(announce), class: "btn btn-success" %>
               </div>
             </div>
           <% end %>
-        </div>
+        <% else %>
+          <p>You still haven't created a announce! </p>
+        <% end %>
+        <%= link_to new_user_announce_path(current_user), class: "btn btn-success ml-4 mb-4" do %>
+          Create an announce
+        <% end %>
+      </div>
     </div>
-    
     <%# SALES TAB %>
     <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="sales-tab">
       <div class="d-flex justify-content-start flex-wrap">
-          <% @user.announces.each do |announce| %>
-            <% announce.orders.each do |order|%>
-              <% if order %>
-                <div class="card m-2" style="width: 18rem;">
-                  <%= image_tag "http://picsum.photos/200/200?random=#{order.id+20}" %>
-                  <div class="card-body">
-                    <h5 class="card-title"><%= order.announce.product_name %></h5>
-                    <%= link_to "Veja mais", order_path(order), class: "btn btn-success" %>
-                  </div>
+        <% @user.announces.each do |announce| %>
+          <% announce.orders.each do |order|%>
+            <% if order %>
+              <div class="card r-border-card m-4" style="width: 18rem;">
+                <%= cl_image_tag order.announce.photo.key, class: "w-100 r-border-pic", width: 280, height: 210, crop: :fill %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= order.announce.product_name %></h5>
+                  <%= link_to "Check it out", order_path(order), class: "btn btn-success" %>
                 </div>
-              <% end %>
+              </div>
             <% end %>
           <% end %>
-        </div>
+        <% end %>
+      </div>
     </div>
-    
     <%# ORDERS TAB %>
     <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
       <div class="d-flex justify-content-start flex-wrap">
-        <% @user.orders.each do |order|%>
-          <div class="card m-2" style="width: 18rem;">
-            <%= image_tag "http://picsum.photos/200/200?random=#{order.id}" %>
-            <div class="card-body">
-              <h5 class="card-title"><%= order.announce.product_name %></h5>
-              <%= link_to "Veja mais", order_path(order), class: "btn btn-success" %>
+        <% if @user.orders %>
+          <% @user.orders.each do |order|%>
+            <div class="card r-border-card m-4" style="width: 18rem;">
+              <%= cl_image_tag order.announce.photo.key, class: "w-100 r-border-pic", width: 280, height: 210, crop: :fill %>
+              <div class="card-body">
+                <h5 class="card-title"><%= order.announce.product_name %></h5>
+                <%= link_to "Check it out", order_path(order), class: "btn btn-success" %>
+              </div>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+          <p>You still haven't bought anything. </p>
         <% end %>
-      </div>    
+      </div>
     </div>
   </div>
 </div>

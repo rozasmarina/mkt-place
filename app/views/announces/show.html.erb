@@ -1,81 +1,70 @@
 <%# navbar %>
-
-  <!-- Product Photo -->
+<!-- Product Photo -->
 <div class="container">
   <% if @announce.photo.blank? %>
   <% else %>
-    <div class="photo-show card card-body shadow-sm p-3 mb-5 mt-5 bg-white rounded txt-center">
-      <%= cl_image_tag  @announce.photo.key, height: 600, width: 1078, crop: :fill %>
+    <div class="photo-show card card-body shadow-sm p-3 mb-5 mt-5 bg-white txt-center r-border-card">
+      <%= cl_image_tag  @announce.photo.key, height: 600, width: 1078, crop: :fill, class: "r-border-pic" %>
       <%#= render "announces_premium",announce: announce %>
     </div>
   <% end %>
-  
   <!-- Product Announce Title -->
-  <div class="side-info-box card container pt-3 card-body">
+  <div class="side-info-box card container pt-3 mt-5 card-body shadow-sm r-border-card f-color">
     <div class="info-header">
       <h1 class="show-name"> <%= @announce.product_name %> </h1>
     </div>
+    <!-- Product Price -->
     <div class="info-price">
-      <p><i class="fas fa-dollar-sign"></i> <%= @announce.price %></p>
-      <%# if we need to show currency symbol, use: humanized_money_with_symbol(@announce.price) %>
-      <%# Using Money rails there's no need for: number_to_currency(@announce.price, precision: 2, unit: "")  %>
+      <p class="show-price font-weight-normal f-color"> <i class="fas fa-dollar-sign sz-fav"> </i> <%= @announce.price %>
+        <!-- Quantity Badge -->
+        <span class="badge badge-qt align-middle">quantity available <%= @announce.quantity %> </span> </p>
+      <!-- Btn Buy -->
+      <% if @announce.user != current_user %>
+        <div class="btn btn-success">
+          <%= link_to  "BUY NOW", new_announce_order_path(@announce) %>
+        </div>
+      <% end %>
     </div>
-    <div class="info-vendor-category">
-      <p>Sold by <%= @announce.user.username  %></p>
-      <p>In <%= @announce.product_category  %></p>
+    <!-- ## DO NOT DELETE! ## -->
+    <%# if we need to show currency symbol, use: humanized_money_with_symbol(@announce.price) %>
+    <%# Using Money rails there's no need for: number_to_currency(@announce.price, precision: 2, unit: "")  %>
+    <!-- Product Description -->
+    <p class="show-title nav nav-tabs f-color">Description</p>
+    <p class="show-txt f-color"><%= @announce.product_description  %> </p>
+  </div>
+  <!-- For Profile Logged  -->
+  <!-- Category / Sold by / Announce Type  -->
+  <div class="side-info-box card container p-3 my-5 card-body shadow-sm r-border-card f-color">
+    <div class="row px-3">
+      <table class="table py-3">
+        <p class="show-title f-color p-1">Details</p>
+        <thead>
+          <tr class="font-table">
+            <th scope="col">Category</th>
+            <th scope="col">Sold by</th>
+            <th scope="col">Announce Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> <%= @announce.product_category %> </td>
+            <td> <%= @announce.user.username %> </td>
+            <td> <%= @announce.announce_type %> </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <% if @announce.user != current_user %>
-      <div class="btn btn-success buy-item">
-        <%= link_to  "Buy", new_announce_order_path(@announce) %>
-      </div>
+  </div>
+  <!-- Announce Edit -->
+  <% if @announce.user == current_user %>
+    <%= link_to  edit_announce_path(@announce)  do %>
+      <p><i class="far fa-edit"></i> Edit announce</p>
     <% end %>
-  </div>
-
-  <!-- Product Price -->
-  <div class="info-price">
-    <p class="show-price font-weight-normal"> <i class="fas fa-dollar-sign"> </i> <%= @announce.price  %> </p>
-  </div>
-    
-  <!-- Product Description -->
-  <p class="show-title nav nav-tabs">Description</p>
-  <p class="show-txt "><%= @announce.product_description  %></p>
-  <p><%= @announce.quantity  %> available</p>
-  <p>Announce type: <%= @announce.announce_type  %></p>
-
-  <!-- Vendor Username -->
-  <div class="info-vendor">
-    <p>Sold by <%= @announce.user.username %> </p>
-  </div>
-
-  <!-- Product Category -->
-  <div class="info-category ">
-    <p>Category <%= @announce.product_category %> </p>
-  </div>
-
-  <!-- Product Buy -->
-  <% if @announce.user != current_user %>
-    <div class="btn btn-success">
-      <%= link_to  "BUY NOW", new_announce_order_path(@announce) %>
-    </div>
+    <!-- Announce Delete -->
+    <%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <p> <i class="far fa-trash-alt"></i> Delete announce</p>
+    <% end %>
   <% end %>
-
-
-<!-- Announce Edit -->
-<% if @announce.user == current_user %>
-<i class="far fa-edit"></i> <%= link_to  "Edit announce", edit_announce_path(@announce) %>
-  
-<!-- Announce Delete -->
-<%= link_to announce_path(@announce), method: :delete, data: { confirm: 'Are you sure?' } do %>
-  <p> <i class="far fa-trash-alt"></i> Delete announce</p>
-  <% end %>
-<% end %>
+  <!-- Back -->
+  <i class="fas fa-arrow-left m-4"></i> <%= link_to  "Back to profile ", user_path(current_user) %>
 </div>
-
-<!-- Back -->
-<i class="fas fa-arrow-left m-4"></i> <%= link_to  "BACK", root_path %>
-
-</div>
-
-
-
-<%# footer %>

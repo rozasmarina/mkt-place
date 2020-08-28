@@ -2,8 +2,8 @@
 <%# banner na home? %>
 <%# add photos do cards %>
 <%# what's the strcuture of the home page? %>
-
 <!-- SEARCH RESULTS-->
+<%# test rollback %>
 <% if @search.present? && @search != '' %>
   <div class="container">
     <% if @search.present? && @announces.empty? %>
@@ -19,24 +19,24 @@
             <div class="card h-100">
               <%= link_to announce_path(announce) do %>
                 <div class="card-body">
-                <% if announce.photo.present? %>
-                  <div class="card-image">
-                    <%= cl_image_tag announce.photo.key, crop: :fill, class: "img-fluid mb-2 rounded" %>
-                  </div>
+                  <% if announce.photo.present? %>
+                    <div class="card-image">
+                      <%= cl_image_tag announce.photo.key, crop: :fill, class: "img-fluid mb-2 rounded" %>
+                    </div>
                   <% end %>
-                  <span class="title-announce"><h5 class="card-title"> <strong> <%= announce.product_name%> </strong> </span></h5>
+                  <span class="title-announce">
+                    <h5 class="card-title"> <strong> <%= announce.product_name%> </strong> </span></h5>
                   <p class="card-text"> <%= announce.product_description %></p>
                   <p class="card-text"> <strong><i class="fas fa-dollar-sign"></i> <%= number_to_currency(announce.price, precision: 2, unit: "")  %> </strong></p>
                 </div>
-              <% end %>        
+              <% end %>
             </div>
           </div>
         <% end %>
       </div>
     </div>
   </div>
-
-<!-- DEFAULT RESULTS-->
+  <!-- DEFAULT RESULTS-->
 <% else %>
   <div class="container">
     <!-- Galeria Premium -->
@@ -65,7 +65,6 @@
         </div>
       </div>
     </div>
-
     <!-- Ultimos anuncios -->
     <div class= "">
       <h2 class="w-100 p-2">Latest additions</h2>
@@ -75,7 +74,6 @@
         <% end %>
       </div>
     </div>
-    
     <!--
       <h1 class="w-100">Top Announces</h1>
   <hr>

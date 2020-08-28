@@ -1,8 +1,17 @@
-<%= simple_form_for :search, url: root_path, method: 'GET', html: { class: 'form-inline my-2 my-lg-0 align-self-end' } do |f| %>
-  <%= f.input :name, label: false, input_html: {placeholder:  'Search products', value: "", class: "form-control btn-search-left"} %>
+<!--<%= simple_form_for :search, url: root_path, method: 'GET', html: { class: 'my-2 my-lg-0 form-inline' } do |f| %>
+  <%= f.input :name, label: false, input_html: {placeholder:  'Search products', value: "", class: "btn-search-left input-group"} %>
   <%# the input_html blank default is to reset the form on page reload %>
-  <%= f.submit "Search", class: "btn btn-success  my-2 my-sm-0 btn-search-right" %>
+  <%= f.submit "Search", class: "btn btn-success  my-2 my-sm-0 btn-search-right input-group" %>
+<% end %> -->
+
+<%= form_tag root_path, method: :get, class: 'form-inline my-2 my-lg-0 align-self-end' do %>
+  <%= text_field_tag :search,
+    params[:search],
+    label: false,
+    value: params[:search],
+    class: "form-control btn-search-left",
+    placeholder: "Search products"
+  %>
+  <%= submit_tag "Search", class: "btn btn-success my-2 my-sm-0 btn-search-right" %>
 <% end %>
-
-
 <%# value = params['search']['name'] - manter para o usuario %>

@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def show
     @order = Order.find(params[:id])
     redirect_to root_path unless @order.announce.user == current_user || @order.user == current_user
@@ -13,12 +12,12 @@ class OrdersController < ApplicationController
   def create
     announce = Announce.find(params[:announce_id])
     order = Order.create!(
-                announce: announce,
-                user: current_user,
-                state: 'pending',
-                quantity: order_params['quantity'],
-                price: announce.price
-                )
+      announce: announce,
+      user: current_user,
+      state: 'pending',
+      quantity: order_params['quantity'],
+      price: announce.price
+    )
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],

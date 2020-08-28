@@ -38,6 +38,7 @@
     </div>
   </div>
 <% else %>
+
   <div class="container">
     <!-- Galeria Premium -->
     <div class= "row">
@@ -64,8 +65,8 @@
       </div>
     </div>
     <!-- Ultimos anuncios -->
-    <div class= "">
-      <h2 class="w-100 p-2">Ultimos anuncios</h2>
+    <div class= "my-4">
+      <h2 class="w-100 p-2 my-3">Latest Announces</h2>
       <div class="row">
         <% @top_announces.reverse.take(8).each do |announce| %>
           <%= render "last_announces",announce: announce %>

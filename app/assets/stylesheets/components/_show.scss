@@ -1,6 +1,7 @@
 .f-color {
     color: #2c2c2dd7 !important;
 }
+
 .r-border-card {
     border-radius: 20px !important;
 }
@@ -8,7 +9,7 @@
 .r-border-pic {
     border-radius: 15px !important;
 }
-    
+
 .show-name {
     padding-bottom: 10px;
     font-size: xx-large;
@@ -20,7 +21,6 @@
     padding-bottom: 10px;
     font-size: xx-large;
     font-weight: 600;
-   // color: #1FD8D9 !important;
     //background-color: rgba(128, 128, 128, 0.166);
 }
 
@@ -28,6 +28,7 @@
     font-size: large;
     color: gray;
 }
+
 .show-title {
     font-size: xx-large;
 }
@@ -49,5 +50,9 @@
 .font-table {
     th {
         font-weight: normal !important;
+    }
 }
-}
+
+// .card-container {
+//     height: 10rem;
+// }

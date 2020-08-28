@@ -1,21 +1,26 @@
-<h1>Place a new order</h1>
 <div class="container">
-  <h1><%= @announce.product_name %></h1>
-  <p>Sold by <%= @announce.user.username  %></p>
-  <p>In <%= @announce.product_category  %></p>
-  <p>Type: <%= @announce.announce_type  %></p>
-  <p>Description:</p>
-  <p><%= @announce.product_description  %></p>
-  <p><i class="fas fa-dollar-sign"></i> <%= @announce.price  %></p>
-  <p><%= @announce.quantity  %> available</p>
-  <%= simple_form_for [@announce, @order] do |f| %>
-    <div>
-      <%= f.input :quantity, collection: (0..@announce.quantity).to_a %>
-      <% hidden_field_tag :announce, @announce %>
+  <div class="card m-4 r-border-card p-5">
+    <div class="container">
+      <h3 class="border-bottom justify-content-center"><strong>New order for <%= @announce.product_name %></strong></h3>
+      <br>
+      <br>
+      <p><strong>Sold by <%= @announce.user.username  %></strong></p>
+      <p>In <%= @announce.product_category  %></p>
+      <p>Description:</p>
+      <p><%= @announce.product_description  %></p>
+      <p><i class="fas fa-dollar-sign"></i> <%= @announce.price  %></p>
+      <p><%= @announce.quantity  %> available</p>
+      <%= simple_form_for [@announce, @order] do |f| %>
+        <div>
+          <%= f.input :quantity, collection: (1..@announce.quantity).to_a, selected: 1 %>
+          <% hidden_field_tag :announce, @announce %>
+        </div>
+        <div>
+          <%= f.submit 'Submit', class: "btn btn-success" %>
+        </div>
+      <% end %>
+      <br>
+      <%= link_to  "Go back", announce_path(@announce) %>
     </div>
-    <div>
-      <%= f.submit 'Submit' %>
-    </div>
-  <% end %>
+  </div>
 </div>
-<%= link_to  "Go back", announce_path(@announce) %>

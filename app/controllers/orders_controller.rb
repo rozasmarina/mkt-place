@@ -32,8 +32,8 @@ class OrdersController < ApplicationController
       cancel_url: order_url(order)
     )
 
-    ### Lógica para mudar o active do announce após a order ser feita
-    ### ver como fica com a implementação do status pending
+    ### Logica para mudar o active do announce após a order ser feita
+    ### ver como fica com a implementacao do status pending
     # order.update(checkout_session_id: session.id)
     # redirect_to new_order_payment_path(order)
     # if @order.save

@@ -34,6 +34,23 @@ class OrdersController < ApplicationController
 
     order.update(checkout_session_id: session.id)
     redirect_to new_order_payment_path(order)
+    
+    ### Logica para mudar o active do announce após a order ser feita
+    ### ver como fica com a implementacao do status pending
+    # order.update(checkout_session_id: session.id)
+    # redirect_to new_order_payment_path(order)
+    # if @order.save
+    #   @announce.quantity -= @order.quantity
+    #   @announce.update_attribute(:quantity, @announce.quantity)
+    #   if @announce.quantity.zero?
+    #     @announce.update_attribute(:active, false)
+    #     redirect_to announces_path
+    #   else
+    #     redirect_to announce_path(@announce)
+    #   end
+    # else
+    #   render :new
+    # end
   end
 
   private

@@ -9,7 +9,7 @@
     </div>
   <% end %>
   <!-- Product Announce Title -->
-  <div class="side-info-box card container pt-3 mt-5 card-body shadow-sm r-border-card f-color">
+  <div class="side-info-box card-container card container pt-3 mt-5 card-body shadow-sm r-border-card f-color">
     <div class="info-header">
       <h1 class="show-name"> <%= @announce.product_name %> </h1>
     </div>
@@ -23,13 +23,15 @@
         <%= link_to "BUY NOW", new_announce_order_path(@announce), class: "btn btn-info btn-position", style: "font-weight: bolder; color: white" %>
       </div>
     <% end %>
+
+    <p class="show-title nav nav-tabs f-color m-2">Description</p>
+    <p class="show-txt f-color"><%= @announce.product_description  %> </p>
   </div>
   <!-- ## DO NOT DELETE! ## -->
   <%# if we need to show currency symbol, use: humanized_money_with_symbol(@announce.price) %>
   <%# Using Money rails there's no need for: number_to_currency(@announce.price, precision: 2, unit: "")  %>
   <!-- Product Description -->
-  <p class="show-title nav nav-tabs f-color m-2">Description</p>
-  <p class="show-txt f-color"><%= @announce.product_description  %> </p>
+ 
 </div>
 <!-- For Profile Logged  -->
 <!-- Category / Sold by / Announce Type  -->

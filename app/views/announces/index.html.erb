@@ -2,8 +2,6 @@
 <%# banner na home? %>
 <%# add photos do cards %>
 <%# what's the strcuture of the home page? %>
-
-
 <% if @search.present? && @search["name"] != '' %>
   <div class="container">
     <% if @search.present? && @announces.empty? %>
@@ -14,26 +12,23 @@
     <div class= "row">
       <h1 class="w-100">Announces for <%= @name %></h1>
       <% @announces.each do |announce| %>
-         <div class="col-6 mb-3">
-          <div class="card h-100">
+        <div class="col-6 mb-3">
+          <div class="card r-border-card h-100">
             <%= link_to announce_path(announce) do %>
               <div class="card-body">
-              <% if announce.photo.present? %>
-                <div class="card-image">
-                  <%= cl_image_tag announce.photo.key, crop: :fill, class: "img-fluid mb-2 rounded" %>
-                </div>
+                <% if announce.photo.present? %>
+                  <div class="card-image r-border-pic ">
+                    <%= cl_image_tag announce.photo.key, crop: :fill, class: "img-fluid mb-2 rounded" %>
+                  </div>
                 <% end %>
-                <span class="title-announce"><h5 class="card-title"> <strong> <%= announce.product_name%> </strong> </span></h5>
+                <span class="title-announce">
+                  <h5 class="card-title"> <strong> <%= announce.product_name%> </strong> </span></h5>
                 <p class="card-text"> <%= announce.product_description %></p>
                 <p class="card-text"> <strong><i class="fas fa-dollar-sign"></i> <%= number_to_currency(announce.price, precision: 2, unit: "")  %> </strong></p>
               </div>
-            <% end %>        
+            <% end %>
           </div>
         </div>
-
-        
-
-
       <% end %>
     </div>
   </div>

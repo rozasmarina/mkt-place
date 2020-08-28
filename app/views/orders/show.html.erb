@@ -7,14 +7,14 @@
         <li><strong>ISSUED ON</strong> <%= @order.created_at.to_date %></li>
         <% if @order.announce.user.username == current_user.username %>
           <p><strong>To user: </strong><%= @order.user.username %></p>
-        <% else %> 
+        <% else %>
           <p><strong>From user: </strong><%= @order.announce.user.username %></p>
         <% end %>
         <li><strong>PRODUCT</strong> <%= @order.announce.product_name %></li>
         <li><strong>TOTAL</strong> <%= @order.price * @order.quantity %></li>
-        </li>
-      </ul>
-      <p>Estimated delivery in <strong>2 business days</strong></p>
-    </div>
+      </li>
+    </ul>
+    <p>Estimated delivery in <strong><%= rand(1..7) %> business days</strong></p>
   </div>
+</div>
 </div>

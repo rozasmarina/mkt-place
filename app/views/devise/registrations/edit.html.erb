@@ -1,6 +1,7 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8 col-sm-10 m-3">
+<div class="container d-flex justify-content-center align-content-center align-items-center mt-5 mb-5" style="width: 700px;">
+  <div class="side-info-box bg-light card-body shadow-sm r-border-card f-color">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8 col-sm-10 m-3">
       <h2>Edit <%= resource_name.to_s.humanize %></h2>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
@@ -24,12 +25,13 @@
           <%= f.input :phone_number %>
           <%= f.input :photo, :label => 'Avatar', as: :file %>
         </div>
+        <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
         <div class="form-actions">
           <%= f.button :submit, "Update" , class: "btn btn-success my-2"%>
         </div>
       <% end %>
-      <%= link_to "Back", :back, class: "btn btn-success my-2" %>
-      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      
     </div>
   </div>
+</div>
 </div>

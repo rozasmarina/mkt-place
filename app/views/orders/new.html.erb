@@ -10,7 +10,7 @@
   <p><%= @announce.quantity  %> available</p>
   <%= simple_form_for [@announce, @order] do |f| %>
     <div>
-      <%= f.input :quantity, collection: (0..@announce.quantity).to_a %>
+      <%= f.input :quantity, collection: (1..@announce.quantity).to_a %>
       <% hidden_field_tag :announce, @announce %>
     </div>
     <div>

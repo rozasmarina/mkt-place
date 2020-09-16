@@ -1,5 +1,5 @@
 meta_product_name: "Handmazing"
 meta_title: "Handmazing - venha mostrar seus produtos para o mundo"
 meta_description: "Venha exibir os produtos que você fabricou para o mundo e se aproximar de compradores em todo lugar."
-meta_image: "cover.png" # should exist in `app/assets/images/`
+meta_image: "cover-meta.jpg" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards

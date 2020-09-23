@@ -23,30 +23,39 @@
         <!-- Galeria Premium -->
         <h2 class="w-100 p-2 my-3"><strong>Premium Gallery</strong></h2>
         <div class= "row">
-          <!-- Controls -->
-          <div class="controls-top">
-            <a class="carousel-control-prev btn-floating" style="color:#1FD8D9;" href="#multi-item-example" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only"> Previous</span>
-            </a>
-            <a class="carousel-control-next btn-floating" style="color:#1FD8D9;" href="#multi-item-example" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only"> Next</span>
-            </a>
-          </div>
-          <!-- Carousel Wrapper -->
-          <div id="multi-item-example" class="carousel slide carousel-multi-item">
-            
-            <!-- Slides -->
-            <div class="carousel-inner" role="listbox">
-              <!-- First slide -->
-              <% @gallery_announces.each_slice(4).with_index do |gallery, index| %>
-                <div class="carousel-item <%= "active" if index.zero?  %>">
-                  <% gallery.each do |announce| %>
-                    <%= render "announces_premium",announce: announce %>
-                  <% end %>
-                </div>
-              <% end %>
+          <div class="container">
+            <!-- Carousel Wrapper -->
+            <div id="multi-item-example" class="carousel slide carousel-multi-item">
+              <!-- Controls -->
+              <div class="controls-top">
+                <a class="carousel-control-prev btn-floating" href="#multi-item-example" role="button" data-slide="prev">
+                  <span class="prev-icon" aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
+                  <span class="sr-only"> Previous</span>
+                </a>
+                <a class="carousel-control-next btn-floating" href="#multi-item-example" role="button" data-slide="next">
+                  <span class="next-icon" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+                  <span class="sr-only"> Next</span>
+                </a>
+              </div>
+              <!--/.Controls-->
+
+              <!--Indicators-->
+              <ol class="carousel-indicators">
+                <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+                <li data-target="#multi-item-example" data-slide-to="1"></li>
+              </ol>
+              <!--/.Indicators-->
+              <!-- Slides -->
+              <div class="carousel-inner" role="listbox">
+                <!-- First slide -->
+                <% @gallery_announces.each_slice(4).with_index do |gallery, index| %>
+                  <div class="carousel-item <%= "active" if index.zero?  %>">
+                    <% gallery.each do |announce| %>
+                      <%= render "announces_premium",announce: announce %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

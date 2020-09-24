@@ -1,0 +1,35 @@
+.carousel-control-prev {
+    position: absolute;
+    left: -35px;
+    color: #1FD8D9;
+    width: 40px;
+}
+
+.carousel-control-next {
+    position: absolute;
+    right: -35px;
+    width: 40px;
+    background-image: none;
+}
+
+.next-icon, .prev-icon {
+    color: #1FD8D9;
+    font-size: 40px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: -35px;
+}
+
+.carousel-indicators li {
+//     width: 10px;
+//     height: 10px;
+//     border-radius: 100%;
+    background-color: #1FD8D9;
+}
+
+// .carousel-control-prev-icon, .carousel-control-next-icon {
+//     background-color: #1FD8D9;
+//     border-radius: 50px;
+// }

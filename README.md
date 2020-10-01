@@ -1,1 +1,1 @@
-# Marketplace created as a projec for Le Wagon's Bootcamp
+# Marketplace created as a project for Le Wagon's Bootcamp
